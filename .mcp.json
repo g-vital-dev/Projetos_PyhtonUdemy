@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "adloop": {
+      "command": "python3",
+      "args": ["-m", "adloop"],
+      "env": { "ADLOOP_TOOLSETS": "ads,ga4,tracking,gtm,gsc" }
+    }
+  }
+}
