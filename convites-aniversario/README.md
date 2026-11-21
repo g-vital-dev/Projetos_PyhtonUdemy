@@ -18,10 +18,12 @@ python3 -m http.server 8000
 | Tela | Rota | O que faz |
 |---|---|---|
 | Landing page | `#/` | Hero, como funciona, recursos, **preços**, FAQ, CTA |
-| Galeria | `#/modelos` | 8 modelos com filtro (Infantil, 15 anos & Teen, Adulto), 3 Premium |
+| Galeria | `#/modelos` | 14 modelos com filtro (Infantil, 15 anos & Teen, Adulto), 5 Premium |
 | Editor | `#/editor` | Formulário com **prévia ao vivo**, rascunho salvo automaticamente |
 | Checkout | (modal) | Escolha de plano + Pix (QR de demonstração) ou cartão — **simulado** |
-| Convite do convidado | `#/c/<código>` | Convite, contagem regressiva, mapa, agenda (.ics), compartilhar, **RSVP**, Pix para presentes |
+| Convite do convidado | `#/c/<código>` | **Abertura de envelope animada + confete** (planos pagos), convite animado, contagem regressiva, mapa, agenda (.ics), compartilhar, **RSVP**, Pix para presentes |
+| Sob medida | `#/sob-medida` | Pacotes de convite personalizado, formulário de pedido com fotos, pagamento total ou sinal de 50% (simulado), resumo do pedido para o WhatsApp |
+| Encomendas | `#/encomendas` | Área do vendedor: recebido/a receber, status (novo → em produção → aguardando aprovação → entregue), prazo com alerta de atraso, WhatsApp do cliente, montar o convite online a partir do pedido |
 | Painel | `#/painel` | Meus convites, estatísticas de confirmação, lista de convidados, exportar CSV, editar, excluir |
 | Termos | `#/termos` | Texto provisório (LGPD / reembolso) |
 
@@ -30,8 +32,19 @@ python3 -m http.server 8000
 | Plano | Preço | Inclui |
 |---|---|---|
 | Grátis | R$ 0 | Modelos básicos, marca d’água, mapa e agenda |
-| Festa | R$ 14,90/convite | Todos os modelos, sem marca d’água, confirmação de presença, contagem regressiva |
+| Festa | R$ 14,90/convite | Convite animado, todos os modelos, sem marca d’água, confirmação de presença, contagem regressiva |
 | Festa+ | R$ 29,90/convite | Tudo do Festa + Pix e lista de presentes + exportar convidados |
+
+### Convite sob medida (preços sugeridos, para testar)
+
+| Pacote | Preço | Prazo | Inclui |
+|---|---|---|---|
+| Personalizado | R$ 89 | 3 dias úteis | Arte exclusiva, 2 ajustes, convite online com confirmação |
+| Personalizado Animado | R$ 149 | 4 dias úteis | + convite animado + vídeo de 15s para Status/Stories |
+| Kit Festa Animado | R$ 249 | 5 dias úteis | + kit para imprimir (topo de bolo, tags, rótulos) e arte de painel |
+| Urgência | + R$ 39 | 1 dia útil | |
+
+Configure o número que recebe os pedidos em `CONTATO_WHATS`, no topo de `app.js`.
 
 O plano grátis funciona como isca: o convite circula com “feito com Convitei” e
 um link “Crie o seu” — cada festa vira divulgação.
