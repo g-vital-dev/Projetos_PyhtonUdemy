@@ -18,8 +18,8 @@ python3 -m http.server 8000
 | Tela | Rota | O que faz |
 |---|---|---|
 | Landing page | `#/` | Hero, como funciona, recursos, **preços**, FAQ, CTA |
-| Galeria | `#/modelos` | 14 modelos com filtro (Infantil, 15 anos & Teen, Adulto), 5 Premium |
-| Editor | `#/editor` | Formulário com **prévia ao vivo**, rascunho salvo automaticamente |
+| Galeria | `#/modelos` | 18 modelos + **“Use a sua arte”**, filtro por categoria, selo ✨ Animado |
+| Editor | `#/editor` | Formulário com **prévia ao vivo**, **foto do aniversariante**, envio de arte própria, rascunho salvo automaticamente |
 | Checkout | (modal) | Escolha de plano + Pix (QR de demonstração) ou cartão — **simulado** |
 | Convite do convidado | `#/c/<código>` | **Abertura de envelope animada + confete** (planos pagos), convite animado, contagem regressiva, mapa, agenda (.ics), compartilhar, **RSVP**, Pix para presentes |
 | Sob medida | `#/sob-medida` | Pacotes de convite personalizado, formulário de pedido com fotos, pagamento total ou sinal de 50% (simulado), resumo do pedido para o WhatsApp |
@@ -58,9 +58,22 @@ um link “Crie o seu” — cada festa vira divulgação.
 - A confirmação também gera uma mensagem pronta para o WhatsApp do anfitrião, então
   **o anfitrião recebe as respostas de verdade** mesmo nesta versão.
 
+## Referência: FestaLab (concorrente)
+
+- Cerca de 984 modelos infantis, com **arte ilustrada** e foto do aniversariante na maioria.
+- Convite em formato de site grátis; cobram pela imagem para baixar (a partir de R$ 14,90).
+- Muitos modelos usam personagens licenciados (Disney, Marvel, Bluey etc.). **Não copiamos isso**:
+  usar personagens sem licença pode gerar notificação e derrubada do site.
+- Temas sem personagem que aparecem entre os populares: Fazendinha, Boiadeira, Festa do Pijama,
+  Fundo do Mar, Borboletas, Bruxinha e Futebol. Todos já estão aqui.
+
+**Maior lacuna:** nossos modelos usam emojis. Para competir, os modelos de lançamento precisam de
+ilustrações próprias (designer ou ilustração gerada por IA com direito de uso comercial).
+O modelo “Use a sua arte” já permite subir essas artes sem mexer em código.
+
 ## O que falta para vender de verdade
 
-1. **Backend + banco** (sugestão: Supabase) — tabelas `usuarios`, `convites`, `confirmacoes`,
+1. **Backend + banco** (também tira as fotos de dentro do link, onde hoje vão comprimidas; sugestão: Supabase) — tabelas `usuarios`, `convites`, `confirmacoes`,
    `pagamentos`. Links curtos (`convitei.com.br/c/abc123`) no lugar do link com os dados.
    Hoje o plano vai dentro do link e poderia ser falsificado; no backend isso some.
 2. **Login** (e-mail com link mágico ou Google) para o painel funcionar em qualquer aparelho.
@@ -73,7 +86,6 @@ um link “Crie o seu” — cada festa vira divulgação.
 
 ## Próximas ideias de produto
 
-- Upload de foto do aniversariante no convite
 - Música de fundo
 - Lembrete automático para convidados 1 dia antes
 - Mais modelos (chá de bebê, casamento, formatura = mais mercados com o mesmo sistema)

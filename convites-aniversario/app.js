@@ -31,6 +31,7 @@
   ];
 
   const TEMPLATES = [
+    { id: 'arte', nome: 'Use a sua arte', cat: 'Sua arte', premium: false, pre: '', swatch: 'repeating-linear-gradient(45deg,#f4eee8 0 6px,#fff 6px 12px)', icon: '🖼️', decos: [] },
     { id: 'safari', nome: 'Safari Selvagem', cat: 'Infantil', premium: false, pre: 'Venha para a aventura de', swatch: '#f6d58e', icon: '🦁', decos: ['🌿', '🦒', '🌴', '🐘', '🦓', '🐒', '🍃'] },
     { id: 'unicornio', nome: 'Unicórnio Mágico', cat: 'Infantil', premium: false, pre: 'Um dia mágico para', swatch: '#e6d0ff', icon: '🦄', decos: ['✨', '🌈', '⭐', '🦄', '💖', '🎀', '✨'] },
     { id: 'futebol', nome: 'Craque da Festa', cat: 'Infantil', premium: false, pre: 'Entre em campo com', swatch: '#2e9a4a', icon: '⚽', decos: ['⚽', '🏆', '🥅', '⭐', '👟', '🎉', '⚽'] },
@@ -38,9 +39,13 @@
     { id: 'mar', nome: 'Fundo do Mar', cat: 'Infantil', premium: false, pre: 'Mergulhe na festa de', swatch: '#7fd3f0', icon: '🐠', decos: ['🐠', '🐙', '🫧', '🐚', '🐢', '🐳', '🫧'] },
     { id: 'borboletas', nome: 'Borboletas', cat: 'Infantil', premium: false, pre: 'Voe até a festa de', swatch: '#ffe0ef', icon: '🦋', decos: ['🦋', '🌸', '🦋', '🌼', '✨', '🦋', '🌷'] },
     { id: 'corrida', nome: 'Corrida Radical', cat: 'Infantil', premium: false, pre: 'Acelere até a festa de', swatch: '#ff4d3d', icon: '🏎️', decos: ['🏎️', '🏁', '🏆', '🚦', '⭐', '🏁', '💨'] },
+    { id: 'fazendinha', nome: 'Fazendinha', cat: 'Infantil', premium: false, pre: 'Vai ter festa na fazendinha de', swatch: '#cfe9ff', icon: '🐄', decos: ['🐄', '🐷', '🌻', '🚜', '🐑', '🐔', '🌾'] },
+    { id: 'pijama', nome: 'Festa do Pijama', cat: 'Infantil', premium: false, pre: 'Traga o travesseiro! Festa do pijama de', swatch: '#ffe6f0', icon: '🧸', decos: ['🌙', '🧸', '🍿', '⭐', '💤', '🦄', '🍭'] },
+    { id: 'bruxinha', nome: 'Bruxinha', cat: 'Infantil', premium: false, pre: 'Uma festa mágica e assustadora de', swatch: '#ff9f43', icon: '🎃', decos: ['🎃', '🦇', '🧹', '👻', '🕸️', '🌙', '🍬'] },
     { id: 'castelo', nome: 'Reino Encantado', cat: 'Infantil', premium: true, pre: 'Você está convidado ao reino de', swatch: '#f9d9ff', icon: '👑', decos: ['👑', '🏰', '✨', '💎', '🌟', '🎀', '✨'] },
     { id: 'heroi', nome: 'Super-Herói', cat: 'Infantil', premium: true, pre: 'Missão especial: festa de', swatch: '#1f4fd1', icon: '🦸', decos: ['💥', '⚡', '🦸', '⭐', '🛡️', '💫', '⚡'] },
     { id: 'espaco', nome: 'Viagem ao Espaço', cat: 'Infantil', premium: true, pre: 'Missão aniversário de', swatch: '#2a1f6b', icon: '🚀', decos: ['🚀', '🪐', '⭐', '🌙', '👽', '☄️', '✨'] },
+    { id: 'boiadeira', nome: 'Boiadeira', cat: '15 anos & Teen', premium: true, pre: 'Aniversário da boiadeira', swatch: '#f7c6d2', icon: '🤠', decos: ['🤠', '👢', '🎸', '⭐', '🌵', '💗', '🐴'] },
     { id: 'floral', nome: 'Jardim Floral', cat: '15 anos & Teen', premium: false, pre: 'Celebre comigo', swatch: '#ffd9df', icon: '🌸', decos: ['🌸', '🌷', '🌿', '🌺', '🍃', '🌸', '🌼'] },
     { id: 'neon', nome: 'Neon Party', cat: '15 anos & Teen', premium: true, pre: 'Bora pra festa de', swatch: '#120b25', icon: '🪩', decos: ['🪩', '🎶', '✨', '🎧', '💜', '⚡', '🎵'] },
     { id: 'dourado', nome: 'Gold Elegance', cat: 'Adulto', premium: true, pre: 'Você é meu convidado especial', swatch: '#111111', icon: '🥂', decos: [] },
@@ -200,14 +205,26 @@
     return `${extra}<div class="deco" aria-hidden="true">${items}</div>`;
   }
 
+  // Só aceita imagens embutidas (data:image) para evitar conteúdo malicioso vindo de links
+  const safeImg = (src) => typeof src === 'string' && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(src);
+
   function cardHTML(d, opts = {}) {
     const t = tplById(d.tpl);
     const plan = PLANS[d.plano] || PLANS.gratis;
     const hour = fmtHour(d);
     const anim = opts.anim && plan.recursos.anim;
-    return `<div class="card-wrap"><div class="invite t-${t.id}${anim ? ' anim' : ''}">
+    const wm = plan.recursos.semMarca ? '' : '<div class="wm">feito com Convitei</div>';
+    if (t.id === 'arte') {
+      return `<div class="card-wrap"><div class="invite t-arte${anim ? ' anim' : ''}">
+        ${safeImg(d.arte) ? `<img class="arte-img" src="${esc(d.arte)}" alt="Convite de ${esc(d.nome || 'aniversário')}">`
+          : '<div class="arte-empty"><b>SUA ARTE AQUI</b><span>Envie a imagem do convite</span><span class="plus">+</span></div>'}
+        ${wm}</div></div>`;
+    }
+    const foto = safeImg(d.foto) ? `<div class="photo"><img src="${esc(d.foto)}" alt="Foto de ${esc(d.nome)}"></div>` : '';
+    return `<div class="card-wrap"><div class="invite t-${t.id}${anim ? ' anim' : ''}${foto ? ' has-photo' : ''}">
       ${decoHTML(t)}
       <div class="pre">${esc(d.pre || t.pre)}</div>
+      ${foto}
       <div class="name">${esc(d.nome || 'Nome')}</div>
       ${d.idade ? `<div class="age">${esc(d.idade)}<small>${d.idade === '1' ? 'aninho' : 'anos'}</small></div>` : ''}
       ${d.msg ? `<p class="msg">${esc(d.msg)}</p>` : ''}
@@ -215,7 +232,7 @@
         <span class="date">${esc(fmtDate(d))}</span>${hour ? ` às ${esc(hour)}` : ''}
         ${d.local ? `<span class="place">📍 ${esc(d.local)}</span>` : ''}
       </div>
-      ${plan.recursos.semMarca ? '' : '<div class="wm">feito com Convitei</div>'}
+      ${wm}
     </div></div>`;
   }
 
@@ -249,7 +266,7 @@
 
     <section><div class="container">
       <div class="dash-head"><div><h2>Modelos em destaque</h2><p class="muted">Toque em um modelo para começar a editar.</p></div><a href="#/modelos" class="btn">Ver todos os modelos</a></div>
-      <div class="gallery">${TEMPLATES.slice(0, 4).map(tplItem).join('')}</div>
+      <div class="gallery">${TEMPLATES.filter((t) => t.id !== 'arte').slice(0, 4).map(tplItem).join('')}</div>
     </div></section>
 
     <section style="background:var(--surface)"><div class="container">
@@ -325,15 +342,16 @@
 
   function tplItem(t) {
     const demo = { tpl: t.id, nome: t.cat === 'Adulto' ? 'Marina' : t.cat === 'Infantil' ? 'Lucas' : 'Sofia', idade: t.cat === 'Adulto' ? '30' : t.cat === 'Infantil' ? '6' : '15', data: nextDate(30), hora: '16:00', local: 'Salão de Festas', plano: 'festa' };
+    if (t.id === 'arte') demo.plano = 'gratis';
     return `<a href="#/editor?tpl=${t.id}" class="tpl-item" style="text-decoration:none">
-      ${cardHTML(demo)}
+      ${t.id === 'arte' ? '' : '<span class="ribbon">✨ Animado</span>'}${cardHTML(demo)}
       <div class="tpl-meta"><strong>${esc(t.nome)}</strong><span class="badge ${t.premium ? 'badge-premium' : ''}">${t.premium ? '★ Premium' : t.cat}</span></div>
     </a>`;
   }
 
   function pageModelos(q) {
     const cat = CATS.includes(q.get('cat')) ? q.get('cat') : 'Todos';
-    const list = cat === 'Todos' ? TEMPLATES : TEMPLATES.filter((t) => t.cat === cat);
+    const list = [tplById('arte'), ...TEMPLATES.filter((t) => t.id !== 'arte' && (cat === 'Todos' || t.cat === cat))];
     return `<section><div class="container">
       <h1>Modelos de convite</h1>
       <p class="muted">Todos os modelos funcionam no celular e podem ser personalizados. Modelos ★ Premium estão nos planos Festa e Festa+, e nesses planos todos os modelos são ✨ animados. Não achou o tema? <a href="#/sob-medida">Peça um convite sob medida</a>.</p>
@@ -372,10 +390,21 @@
         </div>
         <input type="hidden" name="tpl" value="${v('tpl')}">
 
+        <div class="field" id="fld-arte">
+          <label for="f-arte">Imagem do seu convite</label>
+          <input id="f-arte" type="file" accept="image/*">
+          <span class="hint">Já tem a arte pronta (ou fez com a gente no sob medida)? Envie aqui e ganhe a página com confirmação de presença, mapa e contagem regressiva.</span>
+        </div>
+
         <div class="section-title">2. Aniversariante</div>
         <div class="row">
           <div class="field"><label for="f-nome">Nome *</label><input id="f-nome" name="nome" maxlength="24" required value="${v('nome')}" placeholder="Ex.: Theo"></div>
           <div class="field"><label for="f-idade">Idade</label><input id="f-idade" name="idade" inputmode="numeric" maxlength="3" value="${v('idade')}" placeholder="Ex.: 5"></div>
+        </div>
+        <div class="field" id="fld-foto">
+          <label for="f-foto">Foto do aniversariante</label>
+          <div class="photo-row"><input id="f-foto" type="file" accept="image/*"><button type="button" class="btn btn-sm btn-ghost" id="foto-del" ${draft.foto ? '' : 'hidden'}>Remover</button></div>
+          <span class="hint">Opcional. Aparece em destaque no convite.</span>
         </div>
         <div class="field"><label for="f-pre">Frase de abertura</label><input id="f-pre" name="pre" maxlength="40" value="${v('pre')}" placeholder="${esc(tplById(draft.tpl).pre)}"></div>
         <div class="field"><label for="f-msg">Mensagem</label><textarea id="f-msg" name="msg" maxlength="140" placeholder="Ex.: Venha brincar e comer muito bolo!">${v('msg')}</textarea><span class="hint">Até 140 caracteres.</span></div>
@@ -422,11 +451,27 @@
     });
     form.addEventListener('submit', (e) => e.preventDefault());
     $('#btn-anim').addEventListener('click', () => { render(true); toast('Prévia da animação (planos Festa e Festa+)'); });
+    const sync = () => {
+      const arte = draft.tpl === 'arte';
+      $('#fld-arte').hidden = !arte;
+      $('#fld-foto').hidden = arte;
+      $('#foto-del').hidden = !draft.foto;
+    };
     $$('.tpl-swatch', form).forEach((b) => b.addEventListener('click', () => {
       draft.tpl = b.dataset.tpl;
       $$('.tpl-swatch', form).forEach((x) => { x.classList.toggle('active', x === b); x.setAttribute('aria-checked', x === b); });
-      render();
+      sync(); render();
     }));
+    // Imagens vão comprimidas para caber no link (no produto final, vão para o servidor)
+    const loadImg = async (input, key, max, q) => {
+      const file = input.files[0]; if (!file) return;
+      if (!file.type.startsWith('image/')) { toast('Escolha um arquivo de imagem'); return; }
+      try { draft[key] = await resizeImage(file, max, q); sync(); render(); } catch { toast('Não conseguimos ler essa imagem'); }
+    };
+    $('#f-foto').addEventListener('change', (e) => loadImg(e.target, 'foto', 320, 0.72));
+    $('#f-arte').addEventListener('change', (e) => loadImg(e.target, 'arte', 640, 0.7));
+    $('#foto-del').addEventListener('click', () => { draft.foto = undefined; $('#f-foto').value = ''; sync(); render(); });
+    sync();
     $('#btn-reset').addEventListener('click', () => {
       if (!confirm('Apagar tudo o que foi preenchido?')) return;
       store.del('draft'); draft = { tpl: draft.tpl, data: nextDate(21), hora: '16:00' };
@@ -436,6 +481,7 @@
     $('#btn-publish').addEventListener('click', () => {
       if (!draft.nome || !draft.nome.trim()) { toast('Preencha o nome do aniversariante'); $('#f-nome').focus(); return; }
       if (!draft.data) { toast('Escolha a data da festa'); $('#f-data').focus(); return; }
+      if (draft.tpl === 'arte' && !safeImg(draft.arte)) { toast('Envie a imagem do seu convite'); $('#f-arte').focus(); return; }
       if (editing) {
         const list = getInvites().map((i) => (i.id === draft.id ? { ...draft } : i));
         saveInvites(list);
@@ -881,7 +927,7 @@
   }
   const orderTotal = (f) => PACOTES[f.pacote.value].preco + (f.urgente.checked ? URGENCIA : 0);
 
-  function resizeImage(file, max = 720) {
+  function resizeImage(file, max = 720, quality = 0.78) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => {
@@ -890,7 +936,7 @@
         c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
         c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
         URL.revokeObjectURL(img.src);
-        resolve(c.toDataURL('image/jpeg', 0.78));
+        resolve(c.toDataURL('image/jpeg', quality));
       };
       img.onerror = reject;
       img.src = URL.createObjectURL(file);
@@ -1077,6 +1123,7 @@
   function render() {
     clearInterval(countdownTimer);
     document.body.style.overflow = '';
+    $$('.confetti').forEach((c) => c.remove());
     app.removeEventListener('click', onPainelClick);
     app.removeEventListener('change', onEncomendasChange);
     app.removeEventListener('click', onEncomendasClick);
