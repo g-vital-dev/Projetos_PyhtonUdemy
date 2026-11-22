@@ -16,7 +16,7 @@ window.FaiscaCarta = (() => {
   }
 
   const tamanho = t => (t.length > 120 ? "lg" : t.length > 80 ? "md" : "");
-  const dots = n => [1, 2, 3].map(i => `<b class="${i <= n ? "on" : ""}"></b>`).join("");
+  const dots = n => [1, 2, 3, 4].map(i => `<b class="${i <= n ? "on" : ""}"></b>`).join("");
 
   function frente({ tipo, txt, nivel, nome }) {
     const n = nivel + 1;

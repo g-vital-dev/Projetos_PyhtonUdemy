@@ -9,6 +9,8 @@
 .fc-card.lv-1{--lv:#d9a25f}
 .fc-card.lv-2{--lv:#df5f45}
 .fc-card.lv-3{--lv:#c8102e}
+.fc-card.lv-4{--lv:#9e0b2b}
+.fc-card.back.lv-4{--gold:#c9a25a}
 
 .fc-frame{
   position:absolute; inset:4.2cqw; border:.45cqw solid var(--gold); border-radius:2.6cqw;

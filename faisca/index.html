@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Faísca · O jogo do casal</title>
-<meta name="description" content="Faísca é o jogo de cartas para casais: 68 perguntas e desafios em 3 níveis para reacender a conexão e o desejo. Jogue no celular ou imprima. Acesso imediato.">
+<meta name="description" content="Faísca é o jogo de cartas para casais: 100 perguntas e desafios em 4 níveis para reacender a conexão e o desejo. Jogue no celular ou imprima. Acesso imediato.">
 <meta name="theme-color" content="#0f0406">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,7 +80,11 @@
   .box p{color:var(--muted);margin:0}
 
   /* níveis */
-  .niveis{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+  .niveis{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+  .nv.secreto .pilha .fc-card{filter:blur(1.5px) brightness(.75)}
+  .nv.secreto .cadeado{position:absolute;inset:0;display:grid;place-items:center;z-index:3}
+  .nv.secreto .cadeado span{background:rgba(15,4,6,.85);border:1px solid var(--gold);color:var(--gold-hi);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;letter-spacing:.04em}
+  .nv.secreto h3{color:var(--gold-hi)}
   .nv{text-align:center}
   .nv .pilha{position:relative;width:78%;margin:0 auto 26px}
   .nv .pilha .fc-card{box-shadow:0 22px 44px rgba(0,0,0,.55)}
@@ -191,7 +195,7 @@
   .fixo .btn{flex:1;padding:15px;font-size:15px}
 
   @media (max-width:900px){
-    .hero .grid,.lista3,.niveis,.pacote,.bonus,.ofertaBox{grid-template-columns:1fr}
+    .hero .grid,.lista3,.pacote,.bonus,.ofertaBox{grid-template-columns:1fr}
     .passos{grid-template-columns:1fr 1fr}
     .vitrine{height:430px;max-width:400px;margin:0 auto;width:100%}
     .vitrine > [id]{width:150px}
@@ -199,8 +203,9 @@
     .phone{width:180px;top:90px;right:2%}
     .phone .tela{padding:24px 10px 10px}
     section{padding:64px 0}
-    .niveis{gap:48px}
-    .nv .pilha{width:56%}
+    .niveis{grid-template-columns:1fr 1fr;gap:40px 16px}
+    .nv .pilha{width:80%}
+    .nv h3{font-size:22px}.nv p{font-size:14px}
     .fixo{display:flex}
     .garantia{flex-direction:column;text-align:center}
     .ofertaVis{min-height:340px}
@@ -231,9 +236,9 @@
 <section class="hero">
   <div class="c grid">
     <div>
-      <div class="eyebrow">68 cartas picantes para jogar a dois</div>
+      <div class="eyebrow">100 cartas picantes para jogar a dois</div>
       <h1>Reacendam o desejo <em>a partir de hoje</em>.</h1>
-      <p class="lead">Perguntas que aproximam e desafios que esquentam, em 3 níveis que sobem no ritmo de vocês. Jogue no celular hoje à noite ou imprima e jogue na mesa.</p>
+      <p class="lead">Perguntas que aproximam e desafios que esquentam, em 4 níveis que sobem no ritmo de vocês. Jogue no celular hoje à noite ou imprima e jogue na mesa.</p>
       <div class="precoHero"><s class="js-de"></s><b class="js-preco"></b><span class="off js-off"></span></div>
       <a class="btn" href="#oferta">Quero o Faísca agora</a>
       <div class="selos"><span>📱 Acesso imediato por e-mail</span><span>🖨️ PDF para imprimir</span><span>🔒 Compra discreta</span></div>
@@ -268,7 +273,7 @@
 <section>
   <div class="c centro">
     <div class="ornamento"><span class="js-flame"></span></div>
-    <div class="eyebrow">3 baralhos, um ritmo só de vocês</div>
+    <div class="eyebrow">4 baralhos, um deles secreto</div>
     <h2>Comecem conversando.<br><em>Terminem onde quiserem.</em></h2>
     <p class="lead">Cada nível tem a sua cor e mistura perguntas e desafios. Vocês escolhem onde começar e quando subir.</p>
     <div class="niveis" id="niveis"></div>
@@ -299,7 +304,7 @@
       </div>
       <div class="item">
         <div class="vis"><div class="mini-pdf"><div class="folha"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="folha v"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
-        <h3>As 68 cartas em PDF</h3>
+        <h3>As 100 cartas em PDF</h3>
         <p>Arquivo pronto para imprimir em casa ou numa gráfica, com frente e verso, marcas de corte e o tamanho de uma carta de baralho.</p>
       </div>
       <div class="item">
@@ -350,7 +355,8 @@
         <p class="subt">Acesso vitalício, sem mensalidade.</p>
         <ul class="check">
           <li>Jogo no celular, instalável como app</li>
-          <li>68 cartas nos 3 níveis</li>
+          <li>100 cartas em 4 níveis</li>
+          <li>Nível secreto 🔒 liberado só dentro do jogo</li>
           <li>PDF das cartas para imprimir</li>
           <li>Bônus #1: 30 Encontros em Casa <span class="gr">GRÁTIS</span></li>
           <li>Bônus #2: Ritual da Massagem a Dois <span class="gr">GRÁTIS</span></li>
@@ -391,7 +397,7 @@
       <details><summary>Preciso baixar um aplicativo?</summary><p>Não. O jogo abre direto no navegador do celular. Se quiser, toque em "Instalar" e ele ganha um ícone na tela inicial, igual a um app, e funciona até sem internet.</p></details>
       <details><summary>Chega alguma coisa na minha casa?</summary><p>Não. O Faísca é 100% digital. Se quiser as cartas físicas, é só imprimir o PDF em casa ou numa gráfica.</p></details>
       <details><summary>Funciona no iPhone e no Android?</summary><p>Sim, em qualquer celular com navegador atualizado. No iPhone, a instalação é feita pelo Safari, em Compartilhar e depois "Adicionar à Tela de Início".</p></details>
-      <details><summary>É muito explícito?</summary><p>Não. O Faísca é romântico e picante, mas sem ser vulgar. Os níveis sobem aos poucos, vocês escolhem até onde ir e qualquer um pode pular uma carta.</p></details>
+      <details><summary>É muito explícito?</summary><p>Os três primeiros níveis são românticos e picantes, sem vulgaridade. O quarto é um nível secreto para quem quer ir além: ele só é liberado dentro do jogo, depois que os dois confirmam que querem jogar. Em qualquer nível, qualquer um pode pular uma carta.</p></details>
       <details><summary>A compra é discreta?</summary><p>Sim. Nada é enviado pelo correio e a cobrança aparece na fatura com um nome neutro.</p></details>
       <details><summary>Posso jogar quantas vezes quiser?</summary><p>Sim. O acesso é vitalício e as cartas são embaralhadas a cada partida.</p></details>
     </div>
@@ -455,10 +461,15 @@ $("o1").innerHTML = verso(0); $("o2").innerHTML = frente(1, "desafio", 0); $("o3
 
 // níveis
 const exemplos = [[0, "pergunta", 9], [1, "desafio", 7], [2, "pergunta", 6]];
-$("niveis").innerHTML = N.map((n, i) => `
+// o nível restrito (+18) nunca mostra o conteúdo na página: aparece só trancado
+$("niveis").innerHTML = N.map((n, i) => n.restrito ? `
+  <div class="nv secreto">
+    <div class="pilha"><div class="atras">${verso(i)}</div><div class="frente">${verso(i)}</div><div class="cadeado"><span>🔒 Só para quem compra</span></div></div>
+    <div class="n">Nível ${["I", "II", "III", "IV"][i]}</div><h3>Nível secreto</h3><p>Para os casais que querem ir além. Só abre dentro do jogo, quando os dois toparem.</p>
+  </div>` : `
   <div class="nv">
     <div class="pilha"><div class="atras">${verso(i)}</div><div class="frente">${frente(...exemplos[i])}</div></div>
-    <div class="n">Nível ${["I", "II", "III"][i]}</div><h3>${n.emoji} ${n.nome}</h3><p>${n.descricao}</p>
+    <div class="n">Nível ${["I", "II", "III", "IV"][i]}</div><h3>${n.emoji} ${n.nome}</h3><p>${n.descricao}</p>
   </div>`).join("");
 
 // bônus
@@ -473,7 +484,7 @@ $("bonusLista").innerHTML = bonus.map(b => `<div class="bn"><div class="topo-b">
 
 // demo
 let dn = 0, ultimo = -1;
-$("demoNiveis").innerHTML = N.map((n, i) => `<button data-i="${i}" class="${i ? "" : "on"}">${n.emoji} ${n.nome}</button>`).join("");
+$("demoNiveis").innerHTML = N.filter(n => !n.restrito).map((n, i) => `<button data-i="${i}" class="${i ? "" : "on"}">${n.emoji} ${n.nome}</button>`).join("");
 function novaCarta() {
   const n = N[dn];
   const cartas = [...n.perguntas.map(t => ["pergunta", t]), ...n.desafios.map(t => ["desafio", t])];

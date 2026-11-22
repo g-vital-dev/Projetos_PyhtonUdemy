@@ -101,5 +101,49 @@ window.FAISCA_NIVEIS = [
       "Deite {par} e faça um carinho lento da cabeça aos pés, sem pular nenhum pedaço.",
       "Carta coringa: {voce} escolhe o próximo desafio e {par} tem que topar."
     ]
+  },
+  {
+    id: "proibido",
+    nome: "Proibido",
+    emoji: "🔞",
+    restrito: true,
+    descricao: "Sem filtro. Para quando os dois querem ir até o fim.",
+    cor: "#9e0b2b",
+    perguntas: [
+      "Qual é a fantasia que você mais tem vergonha de admitir? Conte agora, com detalhes.",
+      "Qual foi a vez em que você sentiu mais tesão por {par}? Onde vocês estavam?",
+      "Qual posição você quer fazer com {par} hoje? Mostre qual é.",
+      "O que {par} faz na cama que te deixa louco(a)? E o que você queria que fizesse mais?",
+      "Qual é o lugar mais ousado onde você toparia transar com {par}?",
+      "Preliminares longas ou direto ao ponto? Responda e prove na prática.",
+      "Já pensou em {par} enquanto se tocava? Conte como foi.",
+      "De 0 a 10, quanto tesão você está sentindo agora? O que faria virar 10?",
+      "Qual brinquedo, acessório ou fantasia você quer experimentar com {par}?",
+      "Qual som, palavra ou gemido de {par} na hora H mais te excita?",
+      "Qual parte do seu corpo você mais quer que {par} beije quando estão sem roupa?",
+      "Se você pudesse repetir uma noite com {par}, qual seria? Conte o melhor momento."
+    ],
+    desafios: [
+      "Tire toda a roupa de {par}, peça por peça, beijando cada parte que ficar à mostra.",
+      "Faça um strip-tease completo para {par}. {par} escolhe a música.",
+      "{par} fica deitado(a) e não pode se mexer por 3 minutos. Você faz o que quiser com a boca.",
+      "Sexo oral em {par} por 2 minutos. Pare exatamente quando o tempo acabar.",
+      "Escolha uma posição e fiquem nela por 1 minuto, bem devagar, só sentindo.",
+      "Vende os olhos de {par} e use mãos, boca e gelo. {par} tenta adivinhar cada toque.",
+      "Masturbe {par} devagar por 1 minuto, olhando nos olhos.",
+      "Toque-se na frente de {par} por 1 minuto. {par} só pode olhar.",
+      "Prenda as mãos de {par} com uma gravata ou um lenço, sem apertar. Pelos próximos 5 minutos, você está no comando.",
+      "Sussurre no ouvido de {par}, com todos os detalhes, o que vai fazer daqui a pouco.",
+      "Lamba um caminho do pescoço até a virilha de {par}, bem devagar.",
+      "Espalhe óleo pelo corpo inteiro de {par}. Sem pular nenhuma parte.",
+      "Pelos próximos 2 minutos, {par} escolhe onde você beija. Você só obedece.",
+      "Só de roupa íntima, sente no colo de {par} e rebole durante uma música inteira. {par} não pode usar as mãos.",
+      "Mudem de cômodo agora. A próxima carta tem que ser cumprida lá.",
+      "Faça {par} gemer o seu nome. Continue até soar convincente.",
+      "Provoque {par} até quase o limite e pare. Repita três vezes antes de continuar.",
+      "Tomem banho juntos agora. Quem sair primeiro cumpre o próximo desafio em dobro.",
+      "Encenem por 3 minutos a fantasia que um de vocês contou hoje.",
+      "Carta livre: o que vocês quiserem, pelo tempo que quiserem. O jogo termina aqui."
+    ]
   }
 ];

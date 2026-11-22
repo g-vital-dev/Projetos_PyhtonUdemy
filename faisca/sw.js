@@ -1,5 +1,5 @@
 // Faísca: deixa o jogo funcionando sem internet depois do primeiro acesso.
-const CACHE = "faisca-v1";
+const CACHE = "faisca-v2";
 const ARQUIVOS = ["jogo.html", "cartas.js", "assets/carta.js", "assets/carta.css", "manifest.webmanifest", "icons/icon-192.png"];
 
 self.addEventListener("install", e => {
