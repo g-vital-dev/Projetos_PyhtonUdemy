@@ -430,3 +430,71 @@ body.guest-mode .nav .btn::after { content: " também"; }
 .t-boiadeira .name { font-style: italic; color: #c2185b; }
 .t-boiadeira .age { color: #a0522d; font-family: Fredoka; }
 .t-boiadeira .msg, .t-boiadeira .info { font-family: Inter; }
+
+/* ===== Modelos ilustrados (arte de fundo + texto posicionado) ===== */
+.invite.ilu { padding: 0; aspect-ratio: 848 / 1264; background: #eee; display: block; }
+.ilu-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; user-select: none; }
+.ilu-zone { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.ilu-head, .ilu-body { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.ilu .pre { letter-spacing: .06em; text-transform: none; }
+.ilu .name { margin: 0; }
+.ilu .age { font-weight: 400; margin: 0; }
+.ilu .age b { font-weight: inherit; }
+.ilu .msg { margin: 1.5cqw 0; }
+.ilu .when { display: flex; align-items: center; justify-content: center; gap: 2.5cqw; margin-top: 1.5cqw; }
+.ilu .when > span { display: flex; flex-direction: column; align-items: center; line-height: 1.05; }
+.ilu .w-wd { text-transform: capitalize; }
+.ilu .where { margin-top: 1.5cqw; }
+.ilu .photo { margin: 1cqw auto 1.5cqw; }
+.invite.ilu.anim .ilu-bg { animation: ilu-zoom 14s ease-in-out infinite alternate; transform-origin: 50% 60%; }
+@keyframes ilu-zoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+.invite.ilu.anim .when, .invite.ilu.anim .where { animation: c-fade-up .7s 1.7s backwards; }
+
+/* Fazendinha dos Sonhos — texto dentro da moldura creme */
+.ilu-fazenda-sonhos .ilu-zone { top: 21%; bottom: 30%; left: 22%; right: 22%; color: #7a5236; font-family: Fredoka; }
+.ilu-fazenda-sonhos .pre { font: 600 3.6cqw "Baloo 2", Fredoka; color: #b07a54; }
+.ilu-fazenda-sonhos .name { font: 800 12.5cqw/1 "Baloo 2", Fredoka; color: #e2696b; letter-spacing: -.01em; margin-top: 1cqw; text-shadow: 0 .5cqw 0 #fff; }
+.ilu-fazenda-sonhos .age { margin-top: 2cqw; background: #f6c9cf; color: #9a4a55; font: 700 4.4cqw "Baloo 2"; padding: .6cqw 4cqw; border-radius: 99px; }
+.ilu-fazenda-sonhos .msg { font: 500 3.5cqw/1.3 Fredoka; color: #8a6a52; max-width: 95%; }
+.ilu-fazenda-sonhos .when { font: 600 3.4cqw "Baloo 2"; color: #7a5236; }
+.ilu-fazenda-sonhos .w-day { border-left: .4cqw solid #d9b99c; border-right: .4cqw solid #d9b99c; padding: 0 3cqw; }
+.ilu-fazenda-sonhos .w-day b { font: 800 9cqw/1 "Baloo 2"; color: #6aa25a; }
+.ilu-fazenda-sonhos .w-day small { font-size: 3.4cqw; text-transform: uppercase; letter-spacing: .1em; }
+.ilu-fazenda-sonhos .where { font: 500 3.2cqw Fredoka; color: #8a6a52; }
+
+/* Corrida no Deserto — nome na faixa metálica */
+.ilu-corrida-deserto .ilu-zone { top: 11.6%; bottom: 33%; left: 8%; right: 8%; justify-content: flex-start; }
+.ilu-corrida-deserto .ilu-head { height: 23%; justify-content: center; padding: 0 12%; }
+.ilu-corrida-deserto .name { font: 400 11.5cqw/1 "Lilita One", Fredoka; color: #c1121f; text-transform: uppercase; letter-spacing: .02em; text-shadow: 0 .5cqw 0 #fff, 0 .9cqw 1.4cqw rgba(0,0,0,.35); }
+.ilu-corrida-deserto .ilu-body { margin-top: 14%; color: #fff; text-shadow: 0 .5cqw 1.6cqw rgba(0,0,0,.75); }
+.ilu-corrida-deserto .age { font: 400 7cqw/1 "Lilita One"; text-transform: uppercase; color: #fff; }
+.ilu-corrida-deserto .age b { font-size: 15cqw; color: #ffd23f; display: block; -webkit-text-stroke: .5cqw #7a1d12; text-shadow: 0 1cqw 0 #7a1d12; }
+.ilu-corrida-deserto .msg { font: 600 3.4cqw/1.3 Inter; max-width: 80%; }
+.ilu-corrida-deserto .when { background: rgba(25, 12, 8, .72); border: .4cqw solid #ffd23f; border-radius: 3cqw; padding: 1.6cqw 4cqw; font: 400 3.6cqw "Lilita One"; text-transform: uppercase; text-shadow: none; }
+.ilu-corrida-deserto .w-day b { font-size: 8cqw; color: #ffd23f; }
+.ilu-corrida-deserto .w-day small { font-size: 3cqw; }
+.ilu-corrida-deserto .w-day { border-left: .4cqw solid rgba(255,255,255,.5); border-right: .4cqw solid rgba(255,255,255,.5); padding: 0 3cqw; }
+.ilu-corrida-deserto .where { font: 700 3.3cqw Inter; }
+.ilu-corrida-deserto .photo { width: 22cqw; border-color: #ffd23f; }
+
+/* Fundo do Mar Encantado — letra cursiva e datas em bolhas */
+.ilu-mar-encantado .ilu-zone { top: 29%; bottom: 20%; left: 14%; right: 18%; color: #6a4f9a; }
+.ilu-mar-encantado .pre { font: 600 3.4cqw "Dancing Script"; color: #8a6bbf; font-size: 4.6cqw; }
+.ilu-mar-encantado .age { order: -1; background: linear-gradient(90deg, #f7b6d2, #f4a3c4); color: #fff; font: 700 3.6cqw "Baloo 2"; text-transform: uppercase; letter-spacing: .12em; padding: .4cqw 5cqw; border-radius: 1cqw; margin-bottom: 2cqw; box-shadow: 0 .6cqw 1.6cqw rgba(200, 90, 140, .25); }
+.ilu-mar-encantado .ilu-head { order: 0; }
+.ilu-mar-encantado .name { font: 700 15cqw/1.1 "Dancing Script", cursive; color: #a65fc9; text-shadow: 0 .4cqw 0 #fff; }
+.ilu-mar-encantado .msg { font: 500 3.4cqw/1.3 Fredoka; color: #7d6a9e; font-style: italic; }
+.ilu-mar-encantado .when { gap: 3cqw; }
+.ilu-mar-encantado .when > span { width: 16cqw; height: 16cqw; border-radius: 50%; justify-content: center; background: radial-gradient(circle at 35% 30%, #fff, #e8f6ff 60%, #cfe6ff); box-shadow: inset 0 0 0 .4cqw rgba(140, 170, 230, .55), 0 .8cqw 2cqw rgba(110, 140, 200, .25); font: 600 3cqw "Baloo 2"; color: #6a7fb8; }
+.ilu-mar-encantado .w-wd { font-size: 2.6cqw !important; }
+.ilu-mar-encantado .w-day b { font: 800 6cqw/1 "Baloo 2"; color: #6a7fb8; }
+.ilu-mar-encantado .w-day small { font-size: 2.8cqw; }
+.ilu-mar-encantado .where { font: 600 3.2cqw Fredoka; color: #7d6a9e; }
+.ilu-mar-encantado .photo { border-color: #d9c8f5; }
+.invite.ilu-mar-encantado.anim .when > span { animation: c-pop .7s backwards, bubble 3.5s ease-in-out 2.4s infinite; }
+.invite.ilu-mar-encantado.anim .when > span:nth-child(2) { animation-delay: 1.9s, 2.9s; }
+.invite.ilu-mar-encantado.anim .when > span:nth-child(3) { animation-delay: 2.1s, 3.3s; }
+@keyframes bubble { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.2cqw); } }
+
+.badge-new { background: #dff5e8; color: #17784a; }
+.tpl-swatch[style*="url("] { font-size: 0; }

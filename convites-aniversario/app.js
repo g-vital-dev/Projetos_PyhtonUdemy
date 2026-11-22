@@ -31,6 +31,9 @@
   ];
 
   const TEMPLATES = [
+    { id: 'fazenda-sonhos', nome: 'Fazendinha dos Sonhos', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/fazendinha.jpg', pre: 'Vai ter festa na fazendinha!', swatch: '#f3ead9 url(assets/modelos/fazendinha.jpg) center/cover', icon: '' },
+    { id: 'corrida-deserto', nome: 'Corrida no Deserto', cat: 'Infantil', premium: true, ilustrado: true, img: 'assets/modelos/corrida.jpg', pre: '', swatch: '#c9682f url(assets/modelos/corrida.jpg) center/cover', icon: '' },
+    { id: 'mar-encantado', nome: 'Fundo do Mar Encantado', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/mar.jpg', pre: 'O fundo do mar está em festa!', swatch: '#dff4f2 url(assets/modelos/mar.jpg) center/cover', icon: '' },
     { id: 'arte', nome: 'Use a sua arte', cat: 'Sua arte', premium: false, pre: '', swatch: 'repeating-linear-gradient(45deg,#f4eee8 0 6px,#fff 6px 12px)', icon: '🖼️', decos: [] },
     { id: 'safari', nome: 'Safari Selvagem', cat: 'Infantil', premium: false, pre: 'Venha para a aventura de', swatch: '#f6d58e', icon: '🦁', decos: ['🌿', '🦒', '🌴', '🐘', '🦓', '🐒', '🍃'] },
     { id: 'unicornio', nome: 'Unicórnio Mágico', cat: 'Infantil', premium: false, pre: 'Um dia mágico para', swatch: '#e6d0ff', icon: '🦄', decos: ['✨', '🌈', '⭐', '🦄', '💖', '🎀', '✨'] },
@@ -76,9 +79,9 @@
   const tplById = (id) => TEMPLATES.find((t) => t.id === id) || TEMPLATES[0];
 
   const SAMPLES = [
-    { id: 'demo1', tpl: 'safari', nome: 'Theo', idade: '5', data: nextDate(25), hora: '15:00', local: 'Buffet Pequenos Exploradores', endereco: 'Av. Paulista, 1000 - São Paulo, SP', msg: 'Traga seu espírito aventureiro!', plano: 'festa' },
-    { id: 'demo2', tpl: 'neon', nome: 'Júlia', idade: '15', data: nextDate(40), hora: '21:00', local: 'Espaço Lumière', endereco: 'Rua Augusta, 500 - São Paulo, SP', msg: 'Dress code: brilho!', plano: 'festa' },
-    { id: 'demo3', tpl: 'dourado', nome: 'Carlos', idade: '40', data: nextDate(60), hora: '20:00', local: 'Restaurante Villa', endereco: 'Rua Oscar Freire, 200 - São Paulo, SP', msg: 'Um brinde aos 40 com quem faz parte da minha história.', plano: 'festaplus' },
+    { id: 'demo1', tpl: 'fazenda-sonhos', nome: 'Clarice', idade: '2', data: nextDate(25), hora: '15:00', local: 'Buffet Pequenos Exploradores', endereco: 'Av. Paulista, 1000 - São Paulo, SP', msg: 'Traga seu chapéu de palha e venha se divertir!', plano: 'festa' },
+    { id: 'demo2', tpl: 'corrida-deserto', nome: 'Theo', idade: '7', data: nextDate(40), hora: '21:00', local: 'Espaço Lumière', endereco: 'Rua Augusta, 500 - São Paulo, SP', msg: 'Prepare o motor: a festa vai ser em alta velocidade!', plano: 'festa' },
+    { id: 'demo3', tpl: 'mar-encantado', nome: 'Julieta', idade: '3', data: nextDate(60), hora: '20:00', local: 'Restaurante Villa', endereco: 'Rua Oscar Freire, 200 - São Paulo, SP', msg: 'Mergulhe nessa alegria com a gente!', plano: 'festaplus' },
   ];
 
   // ---------- Utilidades ----------
@@ -208,6 +211,35 @@
   // Só aceita imagens embutidas (data:image) para evitar conteúdo malicioso vindo de links
   const safeImg = (src) => typeof src === 'string' && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(src);
 
+  // Modelos com ilustração de fundo: o texto é posicionado sobre a arte
+  function iluCardHTML(d, t, { anim, foto, wm }) {
+    const dt = eventDate(d);
+    const wd = dt ? dt.toLocaleDateString('pt-BR', { weekday: 'long' }).split('-')[0] : '';
+    const day = dt ? dt.getDate() : '';
+    const mon = dt ? dt.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '') : '';
+    const hour = fmtHour(d);
+    const pre = d.pre || t.pre;
+    return `<div class="card-wrap"><div class="invite ilu ilu-${t.id}${anim ? ' anim' : ''}${foto ? ' has-photo' : ''}">
+      <img class="ilu-bg" src="${t.img}" alt="" draggable="false">
+      <div class="ilu-zone">
+        <div class="ilu-head">
+          ${pre ? `<div class="pre">${esc(pre)}</div>` : ''}
+          <div class="name">${esc(d.nome || 'Nome')}</div>
+        </div>
+        <div class="ilu-body">
+          ${foto}
+          ${d.idade ? `<div class="age"><b>${esc(d.idade)}</b> ${d.idade === '1' ? 'aninho' : 'anos'}</div>` : ''}
+          ${d.msg ? `<p class="msg">${esc(d.msg)}</p>` : ''}
+          <div class="info when">
+            ${dt ? `<span class="w-wd">${esc(wd)}</span><span class="w-day"><b>${day}</b><small>${esc(mon)}</small></span>${hour ? `<span class="w-hr">${esc(hour)}</span>` : ''}` : '<span class="w-wd">Data a definir</span>'}
+          </div>
+          ${d.local ? `<div class="where">📍 ${esc(d.local)}</div>` : ''}
+        </div>
+      </div>
+      ${wm}
+    </div></div>`;
+  }
+
   function cardHTML(d, opts = {}) {
     const t = tplById(d.tpl);
     const plan = PLANS[d.plano] || PLANS.gratis;
@@ -221,6 +253,7 @@
         ${wm}</div></div>`;
     }
     const foto = safeImg(d.foto) ? `<div class="photo"><img src="${esc(d.foto)}" alt="Foto de ${esc(d.nome)}"></div>` : '';
+    if (t.ilustrado) return iluCardHTML(d, t, { anim, foto, wm });
     return `<div class="card-wrap"><div class="invite t-${t.id}${anim ? ' anim' : ''}${foto ? ' has-photo' : ''}">
       ${decoHTML(t)}
       <div class="pre">${esc(d.pre || t.pre)}</div>
@@ -345,7 +378,7 @@
     if (t.id === 'arte') demo.plano = 'gratis';
     return `<a href="#/editor?tpl=${t.id}" class="tpl-item" style="text-decoration:none">
       ${t.id === 'arte' ? '' : '<span class="ribbon">✨ Animado</span>'}${cardHTML(demo)}
-      <div class="tpl-meta"><strong>${esc(t.nome)}</strong><span class="badge ${t.premium ? 'badge-premium' : ''}">${t.premium ? '★ Premium' : t.cat}</span></div>
+      <div class="tpl-meta"><strong>${esc(t.nome)}</strong><span class="badge ${t.premium ? 'badge-premium' : t.ilustrado ? 'badge-new' : ''}">${t.premium ? '★ Premium' : t.ilustrado ? 'Novo · Ilustrado' : t.cat}</span></div>
     </a>`;
   }
 
@@ -368,7 +401,7 @@
     const editId = q.get('edit');
     const existing = editId ? getInvites().find((i) => i.id === editId) : null;
     draft = existing ? { ...existing } : { ...store.get('draft', {}) };
-    if (!draft.tpl) draft.tpl = 'safari';
+    if (!draft.tpl) draft.tpl = 'fazenda-sonhos';
     if (q.get('tpl')) draft.tpl = tplById(q.get('tpl')).id;
     if (q.get('plano') && PLANS[q.get('plano')]) draft.planoDesejado = q.get('plano');
     const pedido = q.get('pedido') && getOrders().find((o) => o.id === q.get('pedido'));
