@@ -76,6 +76,18 @@
     novo: '🆕 Novo', producao: '🎨 Em produção', aprovacao: '👀 Aguardando aprovação', entregue: '✅ Entregue',
   };
 
+  // Modelos com cena 3D (cenas.js) substituem as versões antigas com emoji
+  const CENAS = window.CENAS || {};
+  if (CENAS.brinde && !TEMPLATES.some((t) => t.id === 'brinde')) TEMPLATES.push({ id: 'brinde', decos: [] });
+  const OCULTOS = ['mar', 'borboletas', 'corrida', 'fazendinha', 'pijama', 'bruxinha', 'floral', 'confete', 'dourado'];
+  TEMPLATES.forEach((t) => {
+    const cena = CENAS[t.id];
+    if (cena) Object.assign(t, { nome: cena.nome, cat: cena.cat, premium: cena.premium, pre: cena.pre, swatch: cena.swatch, ilustrado: true, cena: true, icon: '' });
+    if (OCULTOS.includes(t.id)) t.oculto = true; // continuam funcionando em links antigos
+  });
+  TEMPLATES.sort((a, b) => (b.ilustrado ? 1 : 0) - (a.ilustrado ? 1 : 0));
+  const VISIVEIS = TEMPLATES.filter((t) => !t.oculto);
+
   const tplById = (id) => TEMPLATES.find((t) => t.id === id) || TEMPLATES[0];
 
   const SAMPLES = [
@@ -220,7 +232,7 @@
     const hour = fmtHour(d);
     const pre = d.pre || t.pre;
     return `<div class="card-wrap"><div class="invite ilu ilu-${t.id}${anim ? ' anim' : ''}${foto ? ' has-photo' : ''}">
-      <img class="ilu-bg" src="${t.img}" alt="" draggable="false">
+      ${t.img ? `<img class="ilu-bg" src="${t.img}" alt="" draggable="false">` : `<div class="scene">${CENAS[t.id].html()}</div>`}
       <div class="ilu-zone">
         <div class="ilu-head">
           ${pre ? `<div class="pre">${esc(pre)}</div>` : ''}
@@ -299,7 +311,7 @@
 
     <section><div class="container">
       <div class="dash-head"><div><h2>Modelos em destaque</h2><p class="muted">Toque em um modelo para começar a editar.</p></div><a href="#/modelos" class="btn">Ver todos os modelos</a></div>
-      <div class="gallery">${TEMPLATES.filter((t) => t.id !== 'arte').slice(0, 4).map(tplItem).join('')}</div>
+      <div class="gallery">${VISIVEIS.filter((t) => t.id !== 'arte').slice(0, 8).map(tplItem).join('')}</div>
     </div></section>
 
     <section style="background:var(--surface)"><div class="container">
@@ -378,13 +390,13 @@
     if (t.id === 'arte') demo.plano = 'gratis';
     return `<a href="#/editor?tpl=${t.id}" class="tpl-item" style="text-decoration:none">
       ${t.id === 'arte' ? '' : '<span class="ribbon">✨ Animado</span>'}${cardHTML(demo)}
-      <div class="tpl-meta"><strong>${esc(t.nome)}</strong><span class="badge ${t.premium ? 'badge-premium' : t.ilustrado ? 'badge-new' : ''}">${t.premium ? '★ Premium' : t.ilustrado ? 'Novo · Ilustrado' : t.cat}</span></div>
+      <div class="tpl-meta"><strong>${esc(t.nome)}</strong><span class="badge ${t.premium ? 'badge-premium' : t.ilustrado ? 'badge-new' : ''}">${t.premium ? '★ Premium' : t.ilustrado ? (t.cena ? 'Novo · 3D' : 'Novo · Ilustrado') : t.cat}</span></div>
     </a>`;
   }
 
   function pageModelos(q) {
     const cat = CATS.includes(q.get('cat')) ? q.get('cat') : 'Todos';
-    const list = [tplById('arte'), ...TEMPLATES.filter((t) => t.id !== 'arte' && (cat === 'Todos' || t.cat === cat))];
+    const list = [tplById('arte'), ...VISIVEIS.filter((t) => t.id !== 'arte' && (cat === 'Todos' || t.cat === cat))];
     return `<section><div class="container">
       <h1>Modelos de convite</h1>
       <p class="muted">Todos os modelos funcionam no celular e podem ser personalizados. Modelos ★ Premium estão nos planos Festa e Festa+, e nesses planos todos os modelos são ✨ animados. Não achou o tema? <a href="#/sob-medida">Peça um convite sob medida</a>.</p>
@@ -419,7 +431,7 @@
 
         <div class="section-title">1. Modelo</div>
         <div class="tpl-picker" role="radiogroup" aria-label="Modelo">
-          ${TEMPLATES.map((t) => `<button type="button" class="tpl-swatch ${t.id === draft.tpl ? 'active' : ''}" data-tpl="${t.id}" style="background:${t.swatch}" title="${esc(t.nome)}${t.premium ? ' (Premium)' : ''}" role="radio" aria-checked="${t.id === draft.tpl}">${t.icon}${t.premium ? '<span class="lock">★</span>' : ''}</button>`).join('')}
+          ${VISIVEIS.map((t) => `<button type="button" class="tpl-swatch ${t.id === draft.tpl ? 'active' : ''}" data-tpl="${t.id}" style="background:${t.swatch}" title="${esc(t.nome)}${t.premium ? ' (Premium)' : ''}" role="radio" aria-checked="${t.id === draft.tpl}">${t.icon}${t.premium ? '<span class="lock">★</span>' : ''}</button>`).join('')}
         </div>
         <input type="hidden" name="tpl" value="${v('tpl')}">
 

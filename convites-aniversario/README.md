@@ -18,7 +18,7 @@ python3 -m http.server 8000
 | Tela | Rota | O que faz |
 |---|---|---|
 | Landing page | `#/` | Hero, como funciona, recursos, **preços**, FAQ, CTA |
-| Galeria | `#/modelos` | 18 modelos + **“Use a sua arte”**, filtro por categoria, selo ✨ Animado |
+| Galeria | `#/modelos` | 13 modelos (3 ilustrados por IA + 10 cenas 3D animadas) + **“Use a sua arte”**, filtro por categoria |
 | Editor | `#/editor` | Formulário com **prévia ao vivo**, **foto do aniversariante**, envio de arte própria, rascunho salvo automaticamente |
 | Checkout | (modal) | Escolha de plano + Pix (QR de demonstração) ou cartão — **simulado** |
 | Convite do convidado | `#/c/<código>` | **Abertura de envelope animada + confete** (planos pagos), convite animado, contagem regressiva, mapa, agenda (.ics), compartilhar, **RSVP**, Pix para presentes |
@@ -48,6 +48,15 @@ Configure o número que recebe os pedidos em `CONTATO_WHATS`, no topo de `app.js
 
 O plano grátis funciona como isca: o convite circula com “feito com Convitei” e
 um link “Crie o seu” — cada festa vira divulgação.
+
+## Modelos
+
+- **Ilustrados (IA):** arte de fundo gerada no Runway em `assets/modelos/`, texto posicionado por cima.
+- **Cenas 3D:** fundo desenhado em CSS/SVG + ilustrações 3D em `assets/3d/`, definidos em `cenas.js`.
+  As ilustrações 3D são do **Fluent Emoji 3D (Microsoft, licença MIT)**; veja `assets/3d/CREDITOS.md`.
+- Os modelos antigos com emoji ficam escondidos, mas links já enviados continuam abrindo.
+
+Para criar um modelo novo: adicione a cena em `cenas.js` e o estilo do texto (`.ilu-<id>`) em `styles.css`.
 
 ## Como o protótipo funciona por dentro
 

@@ -498,3 +498,162 @@ body.guest-mode .nav .btn::after { content: " também"; }
 
 .badge-new { background: #dff5e8; color: #17784a; }
 .tpl-swatch[style*="url("] { font-size: 0; }
+
+/* ===================== Cenas 3D ===================== */
+.invite.ilu .scene { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.scene .bg, .scene .bg-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scene .c3d { position: absolute; height: auto; transform: rotate(var(--r)) scaleX(var(--sx)); filter: drop-shadow(0 1.2cqw 1.4cqw rgba(0,0,0,.18)); user-select: none; }
+.scene .rays { background: repeating-conic-gradient(from 0deg at 50% 38%, #ffd23f 0 9deg, #ffb703 9deg 18deg); }
+.scene .halftone { background-image: radial-gradient(rgba(214, 40, 40, .22) 22%, transparent 24%); background-size: 3.2cqw 3.2cqw; mask-image: linear-gradient(transparent 20%, #000 90%); -webkit-mask-image: linear-gradient(transparent 20%, #000 90%); }
+.scene .field { position: absolute; left: -30%; right: -30%; bottom: 0; height: 40%; background: repeating-linear-gradient(90deg, #2f9e4f 0 10%, #3bb35d 10% 20%); transform: perspective(60cqw) rotateX(52deg); transform-origin: bottom; }
+.scene .beam { position: absolute; top: -10%; width: 40%; height: 95%; background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,0) 85%); clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%); }
+.scene .beam-l { left: -8%; transform: rotate(-24deg); transform-origin: top; }
+.scene .beam-r { right: -8%; transform: rotate(24deg); transform-origin: top; }
+.scene .spot { position: absolute; top: -5%; width: 46%; height: 110%; clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); mix-blend-mode: screen; opacity: .55; transform-origin: top; }
+.scene .spot-1 { left: -10%; background: linear-gradient(#ff4fd8, transparent 80%); transform: rotate(-22deg); }
+.scene .spot-2 { left: 27%; background: linear-gradient(#4ff0ff, transparent 80%); }
+.scene .spot-3 { right: -10%; background: linear-gradient(#ffd23f, transparent 80%); transform: rotate(22deg); }
+.scene .hang { position: absolute; left: 50%; top: 0; width: .4cqw; height: 4%; background: #bbb; }
+
+/* Animações dos personagens (só nos convites animados) */
+@keyframes p3-in { from { opacity: 0; transform: translateY(8cqw) rotate(var(--r)) scaleX(var(--sx)) scale(.6); } }
+@keyframes p3-float { 0%, 100% { transform: translateY(0) rotate(var(--r)) scaleX(var(--sx)); } 50% { transform: translateY(-2cqw) rotate(calc(var(--r) + 3deg)) scaleX(var(--sx)); } }
+@keyframes p3-bounce { 0%, 100% { transform: translateY(0) rotate(var(--r)) scaleX(var(--sx)); } 40% { transform: translateY(-4.5cqw) rotate(var(--r)) scaleX(var(--sx)); } 55% { transform: translateY(0) rotate(var(--r)) scaleX(var(--sx)) scaleY(.92); } }
+@keyframes p3-sway { 0%, 100% { transform: rotate(calc(var(--r) - 4deg)) scaleX(var(--sx)); } 50% { transform: rotate(calc(var(--r) + 4deg)) scaleX(var(--sx)); } }
+@keyframes p3-swing { 0%, 100% { transform: rotate(calc(var(--r) - 10deg)) scaleX(var(--sx)); } 50% { transform: rotate(calc(var(--r) + 10deg)) scaleX(var(--sx)); } }
+@keyframes p3-spin { to { transform: rotate(calc(var(--r) + 360deg)) scaleX(var(--sx)); } }
+@keyframes p3-twinkle { 0%, 100% { opacity: 1; transform: scale(1) rotate(var(--r)); } 50% { opacity: .35; transform: scale(.7) rotate(calc(var(--r) + 25deg)); } }
+@keyframes p3-pulse { 0%, 100% { transform: scale(1) rotate(var(--r)) scaleX(var(--sx)); } 50% { transform: scale(1.05) rotate(var(--r)) scaleX(var(--sx)); } }
+@keyframes p3-drift { 0%, 100% { transform: translateX(0) scaleX(var(--sx)); } 50% { transform: translateX(3cqw) scaleX(var(--sx)); } }
+@keyframes p3-fly { 0%, 100% { transform: translate(0, 0) rotate(var(--r)) scaleX(var(--sx)); } 50% { transform: translate(1.5cqw, -3cqw) rotate(calc(var(--r) - 4deg)) scaleX(var(--sx)); } }
+@keyframes p3-stomp { 0%, 100% { transform: translateY(0) rotate(var(--r)) scaleX(var(--sx)); } 10% { transform: translateY(-1.5cqw) rotate(calc(var(--r) - 3deg)) scaleX(var(--sx)); } 20% { transform: translateY(0) rotate(var(--r)) scaleX(var(--sx)); } }
+@keyframes p3-wobble { 0%, 100% { transform: rotate(var(--r)); } 25% { transform: rotate(calc(var(--r) - 12deg)); } 75% { transform: rotate(calc(var(--r) + 12deg)); } }
+@keyframes p3-flash { 0%, 100% { opacity: 1; } 45% { opacity: 1; } 50% { opacity: .2; } 55% { opacity: 1; } }
+@keyframes p3-pop { 0%, 100% { transform: scale(1) rotate(var(--r)); } 50% { transform: scale(1.12) rotate(calc(var(--r) + 6deg)); } }
+@keyframes tw { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+.invite.anim .scene .c3d { animation-name: p3-in, var(--loop); animation-duration: .7s, var(--dur, 3.4s); animation-timing-function: cubic-bezier(.2, 1.3, .4, 1), ease-in-out; animation-iteration-count: 1, infinite; animation-fill-mode: backwards, none; }
+.scene .a-float { --loop: p3-float; } .scene .a-bounce { --loop: p3-bounce; --dur: 1.8s; } .scene .a-sway { --loop: p3-sway; --dur: 4s; }
+.scene .a-swing { --loop: p3-swing; --dur: 2.6s; } .scene .a-spin { --loop: p3-spin; --dur: 14s; animation-timing-function: cubic-bezier(.2, 1.3, .4, 1), linear !important; }
+.scene .a-twinkle { --loop: p3-twinkle; --dur: 2.2s; } .scene .a-pulse { --loop: p3-pulse; --dur: 3s; } .scene .a-drift { --loop: p3-drift; --dur: 6s; }
+.scene .a-fly { --loop: p3-fly; --dur: 2.8s; } .scene .a-stomp { --loop: p3-stomp; --dur: 2.4s; } .scene .a-wobble { --loop: p3-wobble; --dur: 2s; }
+.scene .a-flash { --loop: p3-flash; --dur: 2.5s; } .scene .a-pop { --loop: p3-pop; --dur: 1.6s; }
+.invite.anim .scene .tw { animation: tw 2.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .invite.anim .scene * { animation: none !important; } }
+
+/* Peças de texto reutilizáveis */
+.ilu.skin .w-day b { display: block; }
+
+/* ---- Safari ---- */
+.ilu-safari .ilu-zone { top: 9%; bottom: 37%; left: 14%; right: 14%; }
+.ilu-safari .pre { font: 800 3.8cqw "Baloo 2"; color: #7a4a1c; text-transform: uppercase; letter-spacing: .08em; }
+.ilu-safari .name { margin-top: 1.5cqw; font: 400 12cqw/1 "Lilita One"; color: #ffe08a; background: linear-gradient(#b36b2c, #8a4c1c); padding: 2.4cqw 6cqw 2.8cqw; border-radius: 3cqw; border: .8cqw solid #5e3210; box-shadow: 0 1.4cqw 0 #5e3210, 0 2.6cqw 3cqw rgba(0,0,0,.25); text-shadow: 0 .6cqw 0 #5e3210; transform: rotate(-2deg); }
+.ilu-safari .age { margin-top: 3.6cqw; width: 21cqw; height: 21cqw; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #2f8f4e; color: #fff; font: 700 3cqw "Baloo 2"; text-transform: uppercase; border: .8cqw solid #fff; box-shadow: 0 1cqw 2cqw rgba(0,0,0,.2); line-height: 1; }
+.ilu-safari .age b { font: 400 10cqw/1 "Lilita One"; }
+.ilu-safari .msg { font: 600 3.4cqw/1.3 "Baloo 2"; color: #6b3f14; }
+.ilu-safari .when { font: 800 3.4cqw "Baloo 2"; color: #6b3f14; text-transform: uppercase; }
+.ilu-safari .w-day { padding: 0 3cqw; border-left: .5cqw solid #b07a3a; border-right: .5cqw solid #b07a3a; }
+.ilu-safari .w-day b { font: 400 8cqw/1 "Lilita One"; color: #2f8f4e; }
+.ilu-safari .where { font: 700 3.2cqw "Baloo 2"; color: #6b3f14; }
+
+/* ---- Unicórnio ---- */
+.ilu-unicornio .ilu-zone { top: 17%; bottom: 40%; left: 8%; right: 8%; }
+.ilu-unicornio .pre { font: 800 3.6cqw "Baloo 2"; color: #8a3f86; text-transform: uppercase; letter-spacing: .12em; }
+.ilu-unicornio .name { font: 400 16cqw/1.15 Pacifico; color: #fff; text-shadow: 0 0 0 #e05aa8, .5cqw .5cqw 0 #e05aa8, -.5cqw -.5cqw 0 #e05aa8, .5cqw -.5cqw 0 #e05aa8, -.5cqw .5cqw 0 #e05aa8, 0 1.4cqw 0 #b44589, 0 2.2cqw 3cqw rgba(180, 69, 137, .4); }
+.ilu-unicornio .age { margin-top: 1cqw; font: 800 3.8cqw "Baloo 2"; color: #fff; background: linear-gradient(90deg, #ff8cc6, #b48cff); padding: .6cqw 5cqw; border-radius: 99px; text-transform: uppercase; letter-spacing: .1em; box-shadow: 0 1cqw 2cqw rgba(180, 69, 137, .3); }
+.ilu-unicornio .msg { font: 600 3.4cqw/1.3 "Baloo 2"; color: #7a3f86; }
+.ilu-unicornio .when { font: 800 3.2cqw "Baloo 2"; color: #7a3f86; background: rgba(255,255,255,.7); padding: 1.4cqw 4cqw; border-radius: 4cqw; }
+.ilu-unicornio .w-day b { font: 800 7.5cqw/1 "Baloo 2"; color: #e05aa8; }
+.ilu-unicornio .where { font: 700 3.2cqw "Baloo 2"; color: #7a3f86; }
+
+/* ---- Futebol ---- */
+.ilu-futebol .ilu-zone { top: 7%; bottom: 36%; left: 10%; right: 10%; color: #fff; }
+.ilu-futebol .pre { font: 400 3.8cqw "Lilita One"; color: #ffd23f; text-transform: uppercase; letter-spacing: .12em; }
+.ilu-futebol .name { font: 400 14cqw/1 "Lilita One"; text-transform: uppercase; color: #fff; -webkit-text-stroke: .5cqw #0b1f4d; text-shadow: 0 1.2cqw 0 #0b1f4d, 0 2cqw 3cqw rgba(0,0,0,.4); }
+.ilu-futebol .age { margin-top: 1cqw; font: 400 4cqw "Lilita One"; text-transform: uppercase; color: #fff; display: flex; flex-direction: column; align-items: center; line-height: .9; }
+.ilu-futebol .age b { font: 400 22cqw/1 Bungee; color: #ffd23f; -webkit-text-stroke: .6cqw #0b1f4d; text-shadow: 0 1.4cqw 0 #0b1f4d; }
+.ilu-futebol .msg { font: 600 3.3cqw/1.3 Inter; color: #e3ecff; }
+.ilu-futebol .when { background: #061230; border: .5cqw solid #ffd23f; border-radius: 2cqw; padding: 1.4cqw 3.4cqw; font: 400 3.3cqw "Lilita One"; text-transform: uppercase; box-shadow: 0 0 3cqw rgba(255, 210, 63, .35); }
+.ilu-futebol .w-day { padding: 0 3cqw; border-left: .4cqw solid #ffd23f; border-right: .4cqw solid #ffd23f; }
+.ilu-futebol .w-day b { font: 400 7cqw/1 Bungee; color: #ffd23f; }
+.ilu-futebol .where { font: 700 3.2cqw Inter; color: #fff; }
+
+/* ---- Dinossauros ---- */
+.ilu-dino .ilu-zone { top: 10%; bottom: 42%; left: 14%; right: 14%; }
+.ilu-dino .pre { font: 800 3.6cqw "Baloo 2"; color: #2f6b3a; text-transform: uppercase; letter-spacing: .08em; }
+.ilu-dino .name { font: 400 15cqw/1 "Lilita One"; color: #ff8a3d; -webkit-text-stroke: .6cqw #2f5a1f; text-shadow: 0 1.2cqw 0 #2f5a1f, 0 2cqw 3cqw rgba(0,0,0,.25); text-transform: uppercase; }
+.ilu-dino .age { margin-top: 1.6cqw; font: 400 4cqw "Lilita One"; color: #fff; background: #2f8f4e; border-radius: 3cqw; padding: .6cqw 4cqw 1cqw; text-transform: uppercase; box-shadow: 0 1cqw 0 #1f5e33; }
+.ilu-dino .age b { font-size: 8cqw; }
+.ilu-dino .msg { font: 700 3.4cqw/1.3 "Baloo 2"; color: #24502d; }
+.ilu-dino .when { font: 800 3.4cqw "Baloo 2"; color: #24502d; text-transform: uppercase; }
+.ilu-dino .w-day { padding: 0 3cqw; border-left: .5cqw solid #2f8f4e; border-right: .5cqw solid #2f8f4e; }
+.ilu-dino .w-day b { font: 400 8cqw/1 "Lilita One"; color: #ff8a3d; }
+.ilu-dino .where { font: 700 3.2cqw "Baloo 2"; color: #24502d; }
+
+/* ---- Espaço ---- */
+.ilu-espaco .ilu-zone { top: 19%; bottom: 40%; left: 10%; right: 10%; color: #fff; }
+.ilu-espaco .pre { font: 400 3.6cqw "Lilita One"; color: #9fd7ff; text-transform: uppercase; letter-spacing: .14em; }
+.ilu-espaco .name { font: 400 15cqw/1 "Lilita One"; text-transform: uppercase; color: #fff; text-shadow: 0 0 2cqw #4f8cff, 0 0 6cqw #4f8cff, 0 1cqw 0 #3a2a8a; }
+.ilu-espaco .age { margin-top: 1cqw; font: 400 4cqw "Lilita One"; text-transform: uppercase; color: #ffd34d; letter-spacing: .1em; }
+.ilu-espaco .age b { font-size: 12cqw; display: block; line-height: 1; text-shadow: 0 0 4cqw rgba(255, 211, 77, .7); }
+.ilu-espaco .msg { font: 500 3.3cqw/1.3 Inter; color: #d8dcff; }
+.ilu-espaco .when { font: 400 3.3cqw "Lilita One"; text-transform: uppercase; border: .4cqw solid rgba(159, 215, 255, .7); border-radius: 99px; padding: 1.2cqw 4cqw; background: rgba(11, 10, 42, .55); }
+.ilu-espaco .w-day b { font-size: 6.5cqw; color: #ffd34d; }
+.ilu-espaco .where { font: 600 3.2cqw Inter; color: #fff; }
+
+/* ---- Reino Encantado ---- */
+.ilu-castelo .ilu-zone { top: 17%; bottom: 45%; left: 8%; right: 8%; }
+.ilu-castelo .pre { font: 600 4.4cqw "Dancing Script"; color: #b0477f; }
+.ilu-castelo .name { font: 700 17cqw/1.1 "Dancing Script"; background: linear-gradient(180deg, #e0559e, #a92f7b); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 .6cqw 0 #fff) drop-shadow(0 1.2cqw 1.6cqw rgba(169, 47, 123, .3)); padding: 0 2cqw; }
+.ilu-castelo .age { font: 700 3.6cqw "Playfair Display"; color: #fff; background: linear-gradient(90deg, #e6b84a, #f7d774, #e6b84a); padding: .6cqw 5cqw; border-radius: 99px; text-transform: uppercase; letter-spacing: .14em; box-shadow: 0 1cqw 2cqw rgba(201, 154, 46, .35); text-shadow: 0 .3cqw 0 rgba(140, 90, 0, .4); }
+.ilu-castelo .msg { font: italic 500 3.4cqw/1.3 "Playfair Display"; color: #8a3a6a; }
+.ilu-castelo .when { font: 600 3.2cqw "Playfair Display"; color: #8a3a6a; }
+.ilu-castelo .w-day { padding: 0 3cqw; border-left: .3cqw solid #e6b84a; border-right: .3cqw solid #e6b84a; }
+.ilu-castelo .w-day b { font: 700 8cqw/1 "Playfair Display"; color: #c2368e; }
+.ilu-castelo .where { font: 600 3.1cqw Inter; color: #8a3a6a; }
+
+/* ---- Super-Heróis ---- */
+.ilu-heroi .ilu-zone { top: 11%; bottom: 44%; left: 8%; right: 8%; }
+.ilu-heroi .pre { font: 400 4.4cqw Bangers; color: #fff; background: #d62828; padding: .4cqw 3cqw; transform: rotate(-3deg); letter-spacing: .06em; box-shadow: .8cqw .8cqw 0 #1d2f6f; }
+.ilu-heroi .name { margin-top: 2cqw; font: 400 19cqw/1 Bangers; letter-spacing: .03em; color: #ffd23f; -webkit-text-stroke: .7cqw #1d2f6f; text-shadow: 1.2cqw 1.2cqw 0 #d62828, 2cqw 2cqw 0 #1d2f6f; transform: rotate(-3deg); text-transform: uppercase; }
+.ilu-heroi .age { margin-top: 1cqw; font: 400 5cqw Bangers; color: #1d2f6f; letter-spacing: .06em; }
+.ilu-heroi .age b { font-size: 9cqw; color: #d62828; }
+.ilu-heroi .msg { font: 800 3.4cqw/1.25 "Baloo 2"; color: #1d2f6f; }
+.ilu-heroi .when { font: 400 3.6cqw Bangers; letter-spacing: .05em; color: #fff; background: #1d2f6f; padding: 1cqw 3.4cqw; border: .5cqw solid #fff; box-shadow: 1cqw 1cqw 0 #d62828; text-transform: uppercase; }
+.ilu-heroi .w-day b { font-size: 7cqw; color: #ffd23f; }
+.ilu-heroi .where { font: 800 3.2cqw "Baloo 2"; color: #1d2f6f; }
+
+/* ---- Noite Neon ---- */
+.ilu-neon .ilu-zone { top: 25%; bottom: 31%; left: 10%; right: 10%; color: #fff; }
+.ilu-neon .pre { font: 400 3.6cqw Bungee; color: #4ff0ff; letter-spacing: .12em; text-shadow: 0 0 2cqw #4ff0ff; text-transform: uppercase; }
+.ilu-neon .name { font: 400 16cqw/1.2 Pacifico; color: #fff; text-shadow: 0 0 1cqw #ff4fd8, 0 0 3cqw #ff4fd8, 0 0 7cqw #ff4fd8; }
+.ilu-neon .age { font: 400 4cqw Bungee; color: #fff; text-transform: uppercase; letter-spacing: .1em; }
+.ilu-neon .age b { font-size: 12cqw; color: transparent; -webkit-text-stroke: .5cqw #4ff0ff; filter: drop-shadow(0 0 1.5cqw #4ff0ff); }
+.ilu-neon .msg { font: 500 3.3cqw/1.3 Inter; color: #f4d9ff; }
+.ilu-neon .when { font: 400 3.2cqw Bungee; text-transform: uppercase; border: .4cqw solid #ff4fd8; box-shadow: 0 0 2cqw #ff4fd8, inset 0 0 2cqw rgba(255, 79, 216, .4); border-radius: 2cqw; padding: 1.2cqw 3.4cqw; }
+.ilu-neon .w-day b { font-size: 6.5cqw; color: #4ff0ff; }
+.ilu-neon .where { font: 600 3.2cqw Inter; }
+.invite.ilu-neon.anim .name { animation: c-pop .9s .45s backwards, c-flicker 3.4s 1.8s infinite; }
+
+/* ---- Boiadeira ---- */
+.ilu-boiadeira .ilu-zone { top: 15%; bottom: 36%; left: 10%; right: 10%; }
+.ilu-boiadeira .pre { font: 400 3.8cqw Rye; color: #8a3b52; letter-spacing: .04em; }
+.ilu-boiadeira .name { font: 400 14cqw/1.05 Rye; color: #d63b74; text-shadow: 0 .7cqw 0 #fff, 0 1.4cqw 0 #7a2a45, 0 2.2cqw 3cqw rgba(122, 42, 69, .3); }
+.ilu-boiadeira .age { margin-top: 1.6cqw; font: 400 4cqw Rye; color: #fff; background: #7a4a2a; padding: .8cqw 5cqw; border-radius: 1.4cqw; border: .5cqw dashed #f4c27a; }
+.ilu-boiadeira .age b { font-size: 6cqw; }
+.ilu-boiadeira .msg { font: 700 3.4cqw/1.3 "Baloo 2"; color: #7a2a45; }
+.ilu-boiadeira .when { font: 800 3.4cqw "Baloo 2"; color: #7a2a45; text-transform: uppercase; }
+.ilu-boiadeira .w-day { padding: 0 3cqw; border-left: .5cqw solid #d63b74; border-right: .5cqw solid #d63b74; }
+.ilu-boiadeira .w-day b { font: 400 8cqw/1 Rye; color: #d63b74; }
+.ilu-boiadeira .where { font: 700 3.2cqw "Baloo 2"; color: #7a2a45; }
+
+/* ---- Brinde Dourado ---- */
+.ilu-brinde .ilu-zone { top: 17%; bottom: 40%; left: 10%; right: 10%; color: #f3e3b5; }
+.ilu-brinde .pre { font: 600 3.4cqw Inter; letter-spacing: .24em; text-transform: uppercase; color: #d9b45a; }
+.ilu-brinde .name { font: italic 500 15cqw/1.1 "Playfair Display"; background: linear-gradient(180deg, #fff1c1, #e6b84a 55%, #b8862a); -webkit-background-clip: text; background-clip: text; color: transparent; padding: 0 2cqw; }
+.ilu-brinde .age { font: 600 3.6cqw Inter; letter-spacing: .3em; text-transform: uppercase; color: #d9b45a; }
+.ilu-brinde .age b { display: block; font: 700 20cqw/1 "Playfair Display"; letter-spacing: 0; background: linear-gradient(180deg, #fff1c1, #e6b84a 55%, #8a6416); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ilu-brinde .msg { font: italic 400 3.5cqw/1.35 "Playfair Display"; color: #e9dcb6; }
+.ilu-brinde .when { font: 600 3cqw Inter; letter-spacing: .14em; text-transform: uppercase; }
+.ilu-brinde .w-day { padding: 0 3cqw; border-left: .3cqw solid #d9b45a; border-right: .3cqw solid #d9b45a; }
+.ilu-brinde .w-day b { font: 700 7cqw/1 "Playfair Display"; color: #f7d774; letter-spacing: 0; }
+.ilu-brinde .where { font: 500 3.1cqw Inter; color: #e9dcb6; }
