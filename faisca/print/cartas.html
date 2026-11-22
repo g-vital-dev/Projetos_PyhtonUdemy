@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Faísca · Cartas para imprimir</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/carta.css">
+<link rel="stylesheet" href="print.css">
+<style>
+  .folha{position:relative;display:grid;place-content:center}
+  .grade{display:grid;grid-template-columns:repeat(3,63mm);grid-auto-rows:88mm;position:relative}
+  .grade .fc-card{border-radius:0;width:63mm}
+  .grade .fc-card .fc-frame{inset:4.8cqw}
+  .grade .vazio{width:63mm;height:88mm}
+  /* marcas de corte */
+  .marcas{position:absolute;inset:-6mm;pointer-events:none}
+  .marcas i{position:absolute;background:#999}
+  .rodape-folha{position:absolute;bottom:7mm;left:0;right:0;text-align:center;font-size:7.5pt;color:#9a8a8c;letter-spacing:.1em}
+</style>
+</head>
+<body>
+<section class="folha capa">
+  <div class="capa-in">
+    <div class="capa-selo" id="selo"></div>
+    <div class="kicker">Edição completa · 68 cartas</div>
+    <h1>Faísca</h1>
+    <p class="capa-sub">O jogo do casal, em versão para imprimir.</p>
+    <div class="cols">
+      <div>
+        <h3>Como imprimir</h3>
+        <ol>
+          <li>Imprima em papel A4 mais grosso (180 g ou mais), colorido, em <b>tamanho real (100%)</b>.</li>
+          <li>Use <b>frente e verso, virando pela borda longa</b>. As páginas já vêm na ordem: frente, verso, frente, verso…</li>
+          <li>Corte seguindo as marquinhas nos cantos. Cada carta tem 6,3 × 8,8 cm, o tamanho de uma carta de baralho.</li>
+          <li>Sem impressora frente e verso? Imprima tudo só de um lado e cole as folhas de frente e verso antes de cortar.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Como jogar</h3>
+        <ol>
+          <li>Separem os três baralhos pela cor do verso: <b>Conexão</b>, <b>Flerte</b> e <b>Faísca</b>.</li>
+          <li>Comecem pelo nível que combina com a noite. Embaralhem e coloquem o monte virado para baixo.</li>
+          <li>Na sua vez, compre uma carta e leia em voz alta. <b>Pergunta</b>: responda com sinceridade. <b>Desafio</b>: cumpra para o seu amor.</li>
+          <li>Cada pessoa pode pular 3 cartas por partida, sem dar explicação.</li>
+          <li>Acabou o monte? Subam de nível, se os dois quiserem.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="combinado">Antes de começar, combinem os limites de vocês. O jogo só funciona quando os dois estão à vontade. Para maiores de 18 anos.</p>
+  </div>
+</section>
+<div id="folhas"></div>
+
+<script src="../cartas.js"></script>
+<script src="../assets/carta.js"></script>
+<script>
+const C = FaiscaCarta, N = FAISCA_NIVEIS;
+document.getElementById("selo").innerHTML = C.FLAME;
+
+const cartas = [];
+N.forEach((n, nivel) => {
+  n.perguntas.forEach(t => cartas.push({ nivel, tipo: "pergunta", t, nome: n.nome }));
+  n.desafios.forEach(t => cartas.push({ nivel, tipo: "desafio", t, nome: n.nome }));
+});
+
+function marcas() {
+  // marcas de corte em volta da grade de 3x3 (189 x 264 mm)
+  const xs = [0, 63, 126, 189], ys = [0, 88, 176, 264];
+  let h = "";
+  xs.forEach(x => { h += `<i style="left:${x + 6 - .1}mm;top:0;width:.2mm;height:4mm"></i><i style="left:${x + 6 - .1}mm;bottom:0;width:.2mm;height:4mm"></i>`; });
+  ys.forEach(y => { h += `<i style="top:${y + 6 - .1}mm;left:0;height:.2mm;width:4mm"></i><i style="top:${y + 6 - .1}mm;right:0;height:.2mm;width:4mm"></i>`; });
+  return `<div class="marcas">${h}</div>`;
+}
+
+let html = "";
+for (let p = 0; p < cartas.length; p += 9) {
+  const lote = cartas.slice(p, p + 9);
+  const pag = p / 9 + 1, total = Math.ceil(cartas.length / 9);
+  // frente
+  let f = "";
+  for (let i = 0; i < 9; i++) {
+    const c = lote[i];
+    f += c ? C.frente({ tipo: c.tipo, nivel: c.nivel, nome: c.nome, txt: C.texto(c.t) }) : '<div class="vazio"></div>';
+  }
+  // verso espelhado na horizontal (para frente e verso pela borda longa)
+  let v = "";
+  for (let r = 0; r < 3; r++) for (let col = 2; col >= 0; col--) {
+    const c = lote[r * 3 + col];
+    v += c ? C.verso({ nivel: c.nivel, nome: c.nome }) : '<div class="vazio"></div>';
+  }
+  html += `<section class="folha"><div class="grade">${f}${marcas()}</div><div class="rodape-folha">FAÍSCA · FOLHA ${pag}/${total} · FRENTE</div></section>`;
+  html += `<section class="folha"><div class="grade">${v}${marcas()}</div><div class="rodape-folha">FAÍSCA · FOLHA ${pag}/${total} · VERSO</div></section>`;
+}
+document.getElementById("folhas").innerHTML = html;
+</script>
+</body>
+</html>

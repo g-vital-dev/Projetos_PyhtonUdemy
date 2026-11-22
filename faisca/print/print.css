@@ -1,0 +1,55 @@
+/* Base comum dos PDFs da Faísca (cartas e bônus). Página A4. */
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff}
+body{font-family:Inter,system-ui,sans-serif;color:#2a1016;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.folha{width:210mm;height:297mm;overflow:hidden;page-break-after:always;break-after:page;position:relative}
+.folha:last-child{page-break-after:auto;break-after:auto}
+b{font-weight:600}
+
+/* capa escura com dourado */
+.capa{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M0 0L20 20M20 0L0 20' stroke='%23d4af6a' stroke-opacity='.11' stroke-width='.6'/%3E%3C/svg%3E") center/17mm 17mm,
+    radial-gradient(70% 45% at 50% 22%, #6d0a1c 0%, #0f0406 80%);
+  color:#f1e4d4;
+}
+.capa::before{content:"";position:absolute;inset:9mm;border:.5mm solid #d4af6a}
+.capa::after{content:"";position:absolute;inset:11mm;border:.25mm solid rgba(212,175,106,.5)}
+.capa-in{position:relative;z-index:1;padding:30mm 24mm 0;text-align:center}
+.capa-selo{width:34mm;height:34mm;border-radius:50%;border:.5mm solid #d4af6a;margin:0 auto 9mm;display:grid;place-items:center;
+  box-shadow:inset 0 0 0 1.6mm rgba(15,4,6,.6), inset 0 0 0 1.9mm rgba(212,175,106,.6)}
+.capa-selo svg{width:12mm}
+.capa-selo svg path{fill:#f3dca2}
+.kicker{font-size:8.5pt;letter-spacing:.32em;text-transform:uppercase;color:#d4af6a;margin-bottom:4mm}
+.capa h1{font-family:Fraunces,serif;font-weight:700;font-size:54pt;letter-spacing:.14em;margin:0;line-height:1;
+  color:#e2c27f}
+.capa-sub{font-family:Fraunces,serif;font-style:italic;font-size:15pt;color:#e8d3c2;margin:5mm 0 13mm}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10mm;text-align:left}
+.capa h3{font-family:Fraunces,serif;font-weight:500;font-size:15pt;color:#f3dca2;margin:0 0 3mm;padding-bottom:2.5mm;border-bottom:.25mm solid rgba(212,175,106,.5)}
+.capa ol{margin:0;padding-left:5mm;font-size:9.6pt;line-height:1.6;color:#dcc8ba}
+.capa ol li{margin-bottom:2mm}
+.capa ol b{color:#fff}
+.combinado{margin:12mm auto 0;max-width:140mm;font-size:9pt;color:#bfa3a8;font-style:italic;line-height:1.6}
+
+/* páginas de conteúdo (bônus) */
+.pagina{padding:22mm 22mm 20mm;background:#fbf6f0}
+.pagina::before{content:"";position:absolute;inset:8mm;border:.3mm solid rgba(212,175,106,.7);pointer-events:none}
+.cab{display:flex;justify-content:space-between;align-items:center;font-size:7.5pt;letter-spacing:.3em;text-transform:uppercase;color:#a07a3c;margin-bottom:9mm}
+.pagina h2{font-family:Fraunces,serif;font-weight:500;font-size:24pt;line-height:1.15;margin:0 0 4mm;color:#2a1016}
+.pagina h3{font-family:Fraunces,serif;font-weight:500;font-size:14pt;margin:7mm 0 2mm;color:#7a0a1d}
+.pagina p,.pagina li{font-size:10.2pt;line-height:1.62;color:#4a2e33}
+.intro{font-size:11pt!important;color:#5a3a40!important;margin:0 0 6mm}
+.num{font-family:Fraunces,serif;color:#c8102e;font-weight:700}
+.pe{position:absolute;bottom:12mm;left:0;right:0;text-align:center;font-size:7.5pt;letter-spacing:.25em;color:#a99396}
+
+/* no PDF, sombras com filtro viram imagem pesada */
+.fc-seal .fc-flame{filter:none!important}
+.fc-name{background:none!important;color:#e2c27f!important}
+/* gradientes viram arquivos enormes no PDF: no papel usamos cores sólidas */
+.grade .fc-card.front{background:#f8efe5!important}
+.grade .fc-card.back.lv-1{background:#2a1409!important}
+.grade .fc-card.back.lv-2{background:#3d100d!important}
+.grade .fc-card.back.lv-3{background:#4a0714!important}
+.grade .fc-seal{background:none!important}
+.grade .fc-orn::before,.grade .fc-orn::after{background:#d4af6a!important;opacity:.7}

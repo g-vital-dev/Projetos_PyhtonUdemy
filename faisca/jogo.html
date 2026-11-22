@@ -4,102 +4,105 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Faísca · O jogo</title>
-<meta name="theme-color" content="#1a0b10">
+<meta name="theme-color" content="#0f0406">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Faísca">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/carta.css">
 <style>
   :root{
-    --bg:#1a0b10; --bg2:#2a1119; --card:#fff7f2; --ink:#2b1218; --muted:#c9a9b0;
-    --accent:#e76f51; --accent2:#f4a261; --line:rgba(255,255,255,.12); --nivel:#e76f51;
+    --bg:#0f0406; --gold:#d4af6a; --gold-hi:#f3dca2; --muted:#bfa3a8; --line:rgba(212,175,106,.18);
+    --red:#c8102e; --coral:#df5f45; --nivel:#d9a25f;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
   body{
-    background:radial-gradient(120% 80% at 50% 0%, #3a1420 0%, var(--bg) 60%);
+    background:radial-gradient(110% 70% at 50% 0%, color-mix(in srgb, var(--nivel) 22%, #2a0a12) 0%, var(--bg) 65%) fixed;
     color:#fff; font-family:Inter,system-ui,sans-serif; -webkit-tap-highlight-color:transparent;
-    min-height:100dvh; display:flex; flex-direction:column;
+    min-height:100dvh; display:flex; flex-direction:column; transition:background .6s;
   }
   button{font:inherit;cursor:pointer;border:0}
-  .wrap{width:100%;max-width:460px;margin:0 auto;padding:20px 16px calc(24px + env(safe-area-inset-bottom));flex:1;display:flex;flex-direction:column}
-  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-  .logo{font-family:Fraunces,serif;font-size:24px;font-weight:700;letter-spacing:.2px}
-  .logo span{color:var(--accent)}
+  .wrap{width:100%;max-width:440px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom));flex:1;display:flex;flex-direction:column}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:8px}
+  .logo{font-family:Fraunces,serif;font-size:22px;font-weight:700;letter-spacing:.18em;color:var(--gold);display:flex;align-items:center;gap:8px}
+  .logo svg{width:14px;color:var(--gold-hi)}
   .ghost{background:transparent;color:var(--muted);padding:8px 10px;border-radius:10px;font-size:14px}
   .ghost:hover{color:#fff;background:rgba(255,255,255,.06)}
-  h1{font-family:Fraunces,serif;font-weight:500;font-size:30px;line-height:1.15;margin:8px 0 6px}
+  .pill{border:1px solid var(--line);color:var(--gold-hi);padding:7px 12px;border-radius:999px;font-size:13px;background:rgba(212,175,106,.08)}
+  h1{font-family:Fraunces,serif;font-weight:500;font-size:30px;line-height:1.15;margin:6px 0 6px}
   p.sub{color:var(--muted);margin:0 0 22px;line-height:1.5}
-  label{display:block;font-size:13px;color:var(--muted);margin:0 0 6px}
+  label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
   input[type=text]{
     width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);
-    background:rgba(255,255,255,.05);color:#fff;font:inherit;font-size:16px;outline:none;margin-bottom:14px
+    background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:16px;outline:none;margin-bottom:16px
   }
-  input[type=text]:focus{border-color:var(--accent)}
-  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
-  .seg button{padding:11px 6px;border-radius:12px;background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--line);font-size:14px}
-  .seg button.on{background:#fff;color:var(--ink);border-color:#fff;font-weight:600}
-  .niveis{display:grid;gap:10px;margin-bottom:20px}
-  .nivel{
-    text-align:left;padding:16px;border-radius:16px;background:rgba(255,255,255,.04);
-    border:1px solid var(--line);color:#fff;display:flex;gap:14px;align-items:center
-  }
-  .nivel .em{font-size:26px;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.07)}
-  .nivel b{display:block;font-size:16px;margin-bottom:2px}
-  .nivel small{color:var(--muted);font-size:13px;line-height:1.4}
-  .nivel.on{border-color:var(--c);background:color-mix(in srgb, var(--c) 18%, transparent)}
+  input[type=text]:focus{border-color:var(--gold)}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+  .seg button{padding:11px 6px;border-radius:12px;background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--line);font-size:14px}
+  .seg button.on{background:var(--gold);color:#1a0609;border-color:var(--gold);font-weight:600}
+  .niveis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+  .nivel{background:transparent;padding:0;border-radius:12px;position:relative;transition:transform .2s, opacity .2s;opacity:.55}
+  .nivel .fc-card{box-shadow:0 10px 24px rgba(0,0,0,.5)}
+  .nivel.on{opacity:1;transform:translateY(-6px)}
+  .nivel.on::after{content:"";position:absolute;left:30%;right:30%;bottom:-12px;height:3px;border-radius:3px;background:var(--gold)}
+  .nivelDesc{min-height:44px;color:var(--muted);font-size:14px;text-align:center;margin:18px 0 18px;line-height:1.45}
   .cta{
-    width:100%;padding:17px;border-radius:16px;background:linear-gradient(135deg,var(--accent),#c1121f);
-    color:#fff;font-weight:700;font-size:17px;box-shadow:0 10px 30px rgba(231,111,81,.35)
+    width:100%;padding:17px;border-radius:16px;background:linear-gradient(135deg,var(--coral),var(--red));
+    color:#fff;font-weight:700;font-size:17px;box-shadow:0 10px 30px rgba(200,16,46,.35)
   }
-  .cta:disabled{opacity:.4;box-shadow:none}
+  .cta:disabled{opacity:.35;box-shadow:none}
   .aviso{font-size:12.5px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5}
 
   /* jogo */
-  .vez{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-  .vez .quem{font-size:14px;color:var(--muted)}
-  .vez .quem b{color:#fff;font-size:18px;display:block;font-family:Fraunces,serif;font-weight:500}
-  .chip{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.07);color:var(--muted);white-space:nowrap}
-  .stage{perspective:1200px;flex:1;display:flex;align-items:center;min-height:380px}
+  .vez{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .vez .quem{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .vez .quem b{color:#fff;font-size:22px;display:block;font-family:Fraunces,serif;font-weight:500;letter-spacing:0;text-transform:none}
+  .chip{font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--gold-hi);white-space:nowrap}
+  .stage{perspective:1400px;flex:1;display:flex;align-items:center;justify-content:center;min-height:380px;padding:8px 0}
   .carta{
-    width:100%;aspect-ratio:3/4;max-height:62dvh;position:relative;transform-style:preserve-3d;
-    transition:transform .6s cubic-bezier(.2,.8,.2,1);margin:0 auto
+    width:min(100%, calc((100dvh - 290px) * 63 / 88));position:relative;transform-style:preserve-3d;
+    transition:transform .7s cubic-bezier(.2,.8,.2,1);cursor:pointer;aspect-ratio:63/88
   }
   .carta.virada{transform:rotateY(180deg)}
-  .face{position:absolute;inset:0;border-radius:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
-  .verso{
-    background:
-      radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 40%),
-      linear-gradient(150deg, var(--nivel), #6a0d1f);
-    display:grid;place-items:center;border:1px solid rgba(255,255,255,.2);box-shadow:0 20px 50px rgba(0,0,0,.45)
-  }
-  .verso .marca{font-family:Fraunces,serif;font-size:44px;font-weight:700;text-align:center}
-  .verso .marca small{display:block;font-family:Inter;font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.8;margin-top:6px;font-weight:500}
-  .verso .toque{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:13px;opacity:.85}
-  .frente{
-    transform:rotateY(180deg);background:var(--card);color:var(--ink);padding:26px 24px;
-    display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(0,0,0,.45)
-  }
-  .tipo{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--nivel)}
-  .texto{font-family:Fraunces,serif;font-size:clamp(22px,6.2vw,28px);line-height:1.3;margin:auto 0;font-weight:500}
-  .rodape{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#8a6a70}
-  .timer{display:none;align-items:center;gap:10px;margin-top:16px}
+  .carta.sai{transition:transform .35s ease-in, opacity .35s;transform:translateX(-120%) rotate(-14deg);opacity:0}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;filter:drop-shadow(0 24px 40px rgba(0,0,0,.55))}
+  .face.f{transform:rotateY(180deg)}
+  .dica{position:absolute;left:0;right:0;bottom:-30px;text-align:center;font-size:13px;color:var(--muted);backface-visibility:hidden}
+  .timer{display:none;align-items:center;justify-content:center;gap:12px;margin-top:38px}
   .timer.on{display:flex}
-  .timer button{background:var(--ink);color:#fff;padding:9px 14px;border-radius:10px;font-size:14px;font-weight:600}
-  .timer .t{font-variant-numeric:tabular-nums;font-weight:700;font-size:20px}
+  .timer button{background:rgba(212,175,106,.12);border:1px solid var(--line);color:var(--gold-hi);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600}
+  .timer .t{font-variant-numeric:tabular-nums;font-weight:700;font-size:20px;min-width:60px}
   .acoes{display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:18px}
-  .sec{padding:16px;border-radius:16px;background:rgba(255,255,255,.07);color:#fff;font-weight:600;border:1px solid var(--line)}
+  .sec{padding:16px;border-radius:16px;background:rgba(255,255,255,.05);color:#fff;font-weight:600;border:1px solid var(--line)}
   .sec:disabled{opacity:.35}
-  .progresso{height:4px;background:rgba(255,255,255,.08);border-radius:4px;margin-top:16px;overflow:hidden}
-  .progresso i{display:block;height:100%;background:var(--nivel);width:0;transition:width .4s}
+  .progresso{height:3px;background:rgba(255,255,255,.08);border-radius:3px;margin-top:16px;overflow:hidden}
+  .progresso i{display:block;height:100%;background:var(--gold);width:0;transition:width .4s}
   .hidden{display:none!important}
   .fim{text-align:center;margin:auto 0}
-  .fim .big{font-size:56px}
+  .fim .fc-card{width:150px;margin:0 auto 18px}
+
+  /* instalar */
+  .sheet{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+  .sheet > div{background:#1c0a0f;border:1px solid var(--line);border-radius:22px 22px 0 0;padding:24px 20px calc(24px + env(safe-area-inset-bottom));max-width:440px;width:100%}
+  .sheet h3{font-family:Fraunces,serif;font-weight:500;font-size:22px;margin:0 0 12px}
+  .sheet ol{color:var(--muted);padding-left:20px;line-height:1.7;margin:0 0 18px}
+  .sheet b{color:#fff}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="logo">Faís<span>ca</span></div>
-    <button class="ghost hidden" id="btnSair">Trocar nível</button>
+    <div class="logo"><span id="logoFlame"></span>FAÍSCA</div>
+    <div>
+      <button class="pill hidden" id="btnInstalar">📲 Instalar</button>
+      <button class="ghost hidden" id="btnSair">Trocar nível</button>
+    </div>
   </header>
 
   <!-- CONFIGURAÇÃO -->
@@ -118,11 +121,12 @@
       <button data-m="desafios">Desafios</button>
     </div>
 
-    <label>Nível</label>
+    <label>Escolham o nível</label>
     <div class="niveis" id="niveis"></div>
+    <p class="nivelDesc" id="nivelDesc">Toque em um baralho.</p>
 
     <button class="cta" id="btnComecar" disabled>Começar</button>
-    <p class="aviso">Combinem os limites antes. Qualquer um pode pular uma carta, sem explicação. 💛<br>Conteúdo para maiores de 18 anos.</p>
+    <p class="aviso">Combinem os limites antes. Qualquer um pode pular uma carta, sem explicação.<br>Conteúdo para maiores de 18 anos.</p>
   </section>
 
   <!-- JOGO -->
@@ -133,20 +137,12 @@
     </div>
     <div class="stage">
       <div class="carta" id="carta" role="button" tabindex="0" aria-label="Virar carta">
-        <div class="face verso">
-          <div class="marca">Faísca<small id="versoNivel">Nível</small></div>
-          <div class="toque">Toque para virar</div>
-        </div>
-        <div class="face frente">
-          <div class="tipo" id="tipo">Pergunta</div>
-          <div class="texto" id="texto"></div>
-          <div class="timer" id="timer">
-            <button id="btnTimer">▶ 60s</button><span class="t" id="tempo">1:00</span>
-          </div>
-          <div class="rodape"><span id="contador">1/20</span><span>faísca</span></div>
-        </div>
+        <div class="face" id="faceVerso"></div>
+        <div class="face f" id="faceFrente"></div>
+        <div class="dica" id="dica">Toque na carta para virar</div>
       </div>
     </div>
+    <div class="timer" id="timer"><button id="btnTimer">▶ Iniciar 60s</button><span class="t" id="tempo">1:00</span></div>
     <div class="acoes">
       <button class="sec" id="btnPular">Pular</button>
       <button class="cta" id="btnProxima">Próxima carta</button>
@@ -156,7 +152,7 @@
 
   <!-- FIM -->
   <section id="telaFim" class="hidden fim">
-    <div class="big">✨</div>
+    <div id="fimCarta"></div>
     <h1>Vocês viraram todas as cartas.</h1>
     <p class="sub" id="fimTexto">Que tal subir de nível?</p>
     <button class="cta" id="btnProximoNivel">Ir para o próximo nível</button>
@@ -164,30 +160,45 @@
   </section>
 </div>
 
+<div class="sheet hidden" id="sheetIos"><div>
+  <h3>Instalar no iPhone</h3>
+  <ol>
+    <li>Abra este link no <b>Safari</b>.</li>
+    <li>Toque no botão <b>Compartilhar</b> (o quadrado com a seta para cima).</li>
+    <li>Escolha <b>Adicionar à Tela de Início</b>.</li>
+  </ol>
+  <button class="cta" id="fecharIos">Entendi</button>
+</div></div>
+
 <script src="cartas.js"></script>
+<script src="assets/carta.js"></script>
 <script>
 (() => {
-  // jogo.html?plano=essencial libera só os níveis 1 e 2
-  const essencial = new URLSearchParams(location.search).get("plano") === "essencial";
-  const NIVEIS = essencial ? window.FAISCA_NIVEIS.slice(0, 2) : window.FAISCA_NIVEIS;
+  const NIVEIS = window.FAISCA_NIVEIS, C = window.FaiscaCarta;
   const $ = id => document.getElementById(id);
   const store = {
     get(k){ try { return JSON.parse(localStorage.getItem("faisca:"+k)); } catch { return null; } },
     set(k,v){ try { localStorage.setItem("faisca:"+k, JSON.stringify(v)); } catch {} }
   };
+  $("logoFlame").innerHTML = C.FLAME;
 
-  const st = { nomes:["",""], modo:"misto", nivel:null, baralho:[], i:0, vez:0, pulos:[3,3] };
+  const st = { nomes:["",""], modo:"misto", nivel:-1, baralho:[], i:0, vez:0, pulos:[3,3] };
 
-  // nomes salvos
   const salvos = store.get("nomes");
   if (salvos) { $("n1").value = salvos[0] || ""; $("n2").value = salvos[1] || ""; }
 
-  // níveis
-  NIVEIS.forEach(n => {
+  // escolha de nível = os versos dos baralhos
+  NIVEIS.forEach((n, idx) => {
     const b = document.createElement("button");
-    b.className = "nivel"; b.style.setProperty("--c", n.cor); b.dataset.id = n.id;
-    b.innerHTML = `<span class="em">${n.emoji}</span><span><b>${n.nome}</b><small>${n.descricao}</small></span>`;
-    b.onclick = () => { st.nivel = n.id; document.querySelectorAll(".nivel").forEach(x => x.classList.toggle("on", x === b)); validar(); };
+    b.className = "nivel"; b.setAttribute("aria-label", `Nível ${n.nome}`);
+    b.innerHTML = C.verso({ nivel: idx, nome: n.nome });
+    b.onclick = () => {
+      st.nivel = idx;
+      document.querySelectorAll(".nivel").forEach(x => x.classList.toggle("on", x === b));
+      $("nivelDesc").textContent = n.descricao;
+      document.documentElement.style.setProperty("--nivel", n.cor);
+      validar();
+    };
     $("niveis").appendChild(b);
   });
 
@@ -197,25 +208,26 @@
     [...$("seg").children].forEach(x => x.classList.toggle("on", x === b));
   });
 
-  const validar = () => { $("btnComecar").disabled = !($("n1").value.trim() && $("n2").value.trim() && st.nivel); };
+  const validar = () => { $("btnComecar").disabled = !($("n1").value.trim() && $("n2").value.trim() && st.nivel >= 0); };
   $("n1").oninput = $("n2").oninput = validar;
 
   const embaralhar = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
   function montarBaralho() {
-    const n = NIVEIS.find(x => x.id === st.nivel);
+    const n = NIVEIS[st.nivel];
     let cartas = [];
     if (st.modo !== "desafios") cartas = cartas.concat(n.perguntas.map(t => ({ t, tipo: "pergunta" })));
     if (st.modo !== "perguntas") cartas = cartas.concat(n.desafios.map(t => ({ t, tipo: "desafio" })));
     st.baralho = embaralhar(cartas); st.i = 0; st.pulos = [3, 3];
     document.documentElement.style.setProperty("--nivel", n.cor);
     $("chipNivel").textContent = `${n.emoji} ${n.nome}`;
-    $("versoNivel").textContent = `Nível ${n.nome}`;
+    $("faceVerso").innerHTML = C.verso({ nivel: st.nivel, nome: n.nome });
   }
 
   function mostrar(sec) {
     ["telaSetup", "telaJogo", "telaFim"].forEach(s => $(s).classList.toggle("hidden", s !== sec));
     $("btnSair").classList.toggle("hidden", sec === "telaSetup");
+    window.scrollTo(0, 0);
   }
 
   $("btnComecar").onclick = () => {
@@ -224,12 +236,11 @@
     st.vez = 0; montarBaralho(); mostrar("telaJogo"); render();
   };
 
-  // timer
+  // timer dos desafios
   let tId = null, resta = 60;
   const fmt = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
-  function pararTimer() { clearInterval(tId); tId = null; resta = 60; $("tempo").textContent = fmt(resta); $("btnTimer").textContent = "▶ 60s"; }
-  $("btnTimer").onclick = e => {
-    e.stopPropagation();
+  function pararTimer() { clearInterval(tId); tId = null; resta = 60; $("tempo").textContent = fmt(resta); $("btnTimer").textContent = "▶ Iniciar 60s"; }
+  $("btnTimer").onclick = () => {
     if (tId) { pararTimer(); return; }
     $("btnTimer").textContent = "■ Parar";
     tId = setInterval(() => {
@@ -242,51 +253,65 @@
     pararTimer();
     const c = st.baralho[st.i];
     const voce = st.nomes[st.vez], par = st.nomes[1 - st.vez];
-    $("carta").classList.remove("virada");
+    const carta = $("carta");
+    carta.classList.remove("virada", "sai");
     $("quem").textContent = voce;
-    setTimeout(() => {
-      $("texto").textContent = c.t.replaceAll("{voce}", voce).replaceAll("{par}", par);
-      $("tipo").textContent = c.tipo === "pergunta" ? "💬 Pergunta" : "🔥 Desafio";
-      $("timer").classList.toggle("on", c.tipo === "desafio");
-    }, 250);
-    $("contador").textContent = `${st.i + 1}/${st.baralho.length}`;
+    $("timer").classList.remove("on");
+    $("faceFrente").innerHTML = C.frente({ tipo: c.tipo, nivel: st.nivel, txt: C.texto(c.t, voce, par), nome: NIVEIS[st.nivel].nome });
+    $("dica").classList.remove("hidden");
     $("barra").style.width = `${(st.i / st.baralho.length) * 100}%`;
     $("btnPular").textContent = `Pular (${st.pulos[st.vez]})`;
     $("btnPular").disabled = st.pulos[st.vez] <= 0;
   }
 
-  const virar = () => $("carta").classList.toggle("virada");
+  function virar() {
+    const carta = $("carta");
+    carta.classList.toggle("virada");
+    $("dica").classList.add("hidden");
+    const c = st.baralho[st.i];
+    $("timer").classList.toggle("on", carta.classList.contains("virada") && c && c.tipo === "desafio");
+  }
   $("carta").onclick = virar;
   $("carta").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); virar(); } };
 
   function avancar() {
     st.i++; st.vez = 1 - st.vez;
     if (st.i >= st.baralho.length) { fim(); return; }
-    render();
+    $("carta").classList.add("sai");
+    setTimeout(render, 330);
   }
   $("btnProxima").onclick = avancar;
   $("btnPular").onclick = () => {
     if (st.pulos[st.vez] <= 0) return;
     st.pulos[st.vez]--;
-    // a carta pulada volta para o fim do baralho, para a outra pessoa
-    st.baralho.push(st.baralho[st.i]);
+    st.baralho.push(st.baralho[st.i]); // a carta pulada volta no fim, para a outra pessoa
     avancar();
   };
 
   function fim() {
     pararTimer();
-    const idx = NIVEIS.findIndex(n => n.id === st.nivel);
-    const prox = NIVEIS[idx + 1];
+    const prox = NIVEIS[st.nivel + 1];
+    $("fimCarta").innerHTML = C.verso({ nivel: st.nivel, nome: NIVEIS[st.nivel].nome });
     $("btnProximoNivel").classList.toggle("hidden", !prox);
-    $("fimTexto").textContent = prox ? `Que tal subir para o nível ${prox.emoji} ${prox.nome}?` : "Vocês chegaram ao nível máximo. O resto da noite é com vocês. 😉";
+    $("fimTexto").textContent = prox ? `Que tal subir para o nível ${prox.emoji} ${prox.nome}?` : "Vocês chegaram ao nível máximo. O resto da noite é com vocês.";
     mostrar("telaFim");
   }
-  $("btnProximoNivel").onclick = () => {
-    const idx = NIVEIS.findIndex(n => n.id === st.nivel);
-    st.nivel = NIVEIS[idx + 1].id; montarBaralho(); mostrar("telaJogo"); render();
-  };
+  $("btnProximoNivel").onclick = () => { st.nivel++; montarBaralho(); mostrar("telaJogo"); render(); };
   $("btnRecomecar").onclick = () => { montarBaralho(); mostrar("telaJogo"); render(); };
   $("btnSair").onclick = () => { pararTimer(); mostrar("telaSetup"); validar(); };
+
+  // ---- instalar como app (PWA) ----
+  const instalado = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  let promptInstalar = null;
+  addEventListener("beforeinstallprompt", e => { e.preventDefault(); promptInstalar = e; $("btnInstalar").classList.remove("hidden"); });
+  if (ios && !instalado) $("btnInstalar").classList.remove("hidden");
+  $("btnInstalar").onclick = async () => {
+    if (promptInstalar) { promptInstalar.prompt(); await promptInstalar.userChoice; promptInstalar = null; $("btnInstalar").classList.add("hidden"); }
+    else $("sheetIos").classList.remove("hidden");
+  };
+  $("fecharIos").onclick = () => $("sheetIos").classList.add("hidden");
+  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(() => {});
 
   validar();
 })();

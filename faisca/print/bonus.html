@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Faísca · Bônus</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  .bonus{display:none}
+  .bonus.on{display:block}
+  .tag-bonus{display:inline-block;border:.3mm solid #d4af6a;color:#f3dca2;font-size:8pt;letter-spacing:.3em;text-transform:uppercase;padding:2mm 4mm;border-radius:10mm;margin-bottom:8mm}
+  .capa .capa-in{padding-top:58mm}
+  .capa h1.t{font-size:40pt;letter-spacing:.02em;line-height:1.08}
+  .capa .lista-capa{display:flex;justify-content:center;gap:8mm;color:#d4af6a;font-size:8.5pt;letter-spacing:.2em;text-transform:uppercase;margin-top:6mm}
+  .capa .assinatura{position:absolute;bottom:22mm;left:0;right:0;text-align:center;font-family:Fraunces,serif;letter-spacing:.3em;color:#d4af6a;font-size:11pt}
+
+  /* bônus 1 */
+  .grupo{margin-bottom:6mm}
+  .encontros{display:grid;grid-template-columns:1fr 1fr;gap:3.2mm 8mm}
+  .enc{break-inside:avoid;border-top:.25mm solid rgba(212,175,106,.6);padding-top:2.6mm}
+  .enc b{font-family:Fraunces,serif;font-weight:500;font-size:11.5pt;color:#2a1016;display:block;margin-bottom:.6mm}
+  .enc b .num{margin-right:2mm}
+  .enc span{font-size:9.4pt;line-height:1.5;color:#5a3a40;display:block}
+  .titulo-grupo{display:flex;align-items:center;gap:4mm;font-size:8pt;letter-spacing:.3em;text-transform:uppercase;color:#a07a3c;margin:0 0 4mm}
+  .titulo-grupo::after{content:"";flex:1;height:.25mm;background:rgba(212,175,106,.6)}
+
+  /* bônus 2 */
+  .prep{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin:2mm 0 4mm}
+  .prep div{background:#fff;border:.25mm solid rgba(212,175,106,.6);border-radius:3mm;padding:4mm;font-size:9pt;line-height:1.45;color:#5a3a40}
+  .prep div b{display:block;font-family:Fraunces,serif;font-size:11pt;color:#2a1016;margin-bottom:1mm;font-weight:500}
+  .passos{counter-reset:p;display:grid;gap:4mm}
+  .passos > div{display:grid;grid-template-columns:12mm 1fr;gap:4mm;break-inside:avoid}
+  .passos > div::before{counter-increment:p;content:counter(p);width:11mm;height:11mm;border-radius:50%;border:.35mm solid #d4af6a;display:grid;place-items:center;font-family:Fraunces,serif;font-size:13pt;color:#7a0a1d}
+  .passos h4{font-family:Fraunces,serif;font-weight:500;font-size:12.5pt;margin:1.5mm 0 1mm;color:#2a1016}
+  .passos p{margin:0}
+  .passos em{color:#a07a3c;font-style:normal;font-size:8.5pt;letter-spacing:.15em;text-transform:uppercase}
+  .caixa{background:#2a1016;color:#f1e4d4;border-radius:4mm;padding:6mm 7mm;margin-top:6mm}
+  .caixa h3{color:#f3dca2!important;margin-top:0!important}
+  .caixa p,.caixa li{color:#e5d3c5!important}
+
+  /* bônus 3 */
+  .bilhetes{display:grid;grid-template-columns:repeat(3,56mm);grid-auto-rows:68mm;gap:4mm;justify-content:center;margin-top:3mm}
+  .bil{border:.3mm dashed #c9b28a;border-radius:2mm;padding:3mm;position:relative}
+  .bil-in{height:100%;border:.35mm solid #d4af6a;border-radius:1.4mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5mm;background:#fffaf3}
+  .bil-in .k{font-size:6.8pt;letter-spacing:.3em;text-transform:uppercase;color:#a07a3c;margin-bottom:3mm}
+  .bil-in p{font-family:Fraunces,serif;font-size:11.4pt;line-height:1.35;color:#2a1016;margin:0}
+  .bil-in .ass{margin-top:4mm;font-size:7pt;letter-spacing:.2em;color:#a99396;border-top:.2mm solid #d4af6a;padding-top:1.5mm;width:60%}
+  .bil.escuro .bil-in{background:#1a0609;border-color:#d4af6a}
+  .bil.escuro .bil-in p{color:#f3dca2}
+  .bil.escuro .bil-in .k{color:#d4af6a}
+  .tesoura{font-size:8pt;color:#a99396;text-align:center;margin-top:4mm;letter-spacing:.1em}
+</style>
+</head>
+<body>
+
+<!-- ================= BÔNUS 1 ================= -->
+<div class="bonus" id="b1">
+  <section class="folha capa"><div class="capa-in">
+    <div class="capa-selo flame"></div>
+    <div class="tag-bonus">Bônus #1</div>
+    <h1 class="t">30 Encontros<br>em Casa</h1>
+    <p class="capa-sub">Um mês de noites diferentes sem sair do sofá.</p>
+    <div class="lista-capa"><span>Conversar</span><span>·</span><span>Divertir</span><span>·</span><span>Esquentar</span></div>
+  </div><div class="assinatura">FAÍSCA</div></section>
+
+  <section class="folha pagina">
+    <div class="cab"><span>Bônus #1 · 30 encontros em casa</span><span>Faísca</span></div>
+    <h2>Não precisa de reserva.<br>Precisa de intenção.</h2>
+    <p class="intro">Escolham um por semana, ou sorteiem. A regra é uma só: celular longe, pelo menos durante o encontro. Marquem os que já fizeram e repitam os favoritos.</p>
+    <div class="titulo-grupo">Para conversar</div>
+    <div class="encontros" id="g1"></div>
+    <div class="pe">FAÍSCA · 1</div>
+  </section>
+
+  <section class="folha pagina">
+    <div class="cab"><span>Bônus #1 · 30 encontros em casa</span><span>Faísca</span></div>
+    <h2>Para rir junto</h2>
+    <p class="intro">Casal que se diverte junto não cai na rotina. Aqui vale fazer bagunça.</p>
+    <div class="titulo-grupo">Para se divertir</div>
+    <div class="encontros" id="g2"></div>
+    <div class="pe">FAÍSCA · 2</div>
+  </section>
+
+  <section class="folha pagina">
+    <div class="cab"><span>Bônus #1 · 30 encontros em casa</span><span>Faísca</span></div>
+    <h2>Para o clima subir</h2>
+    <p class="intro">Deixem estes para as noites em que a vontade é terminar bem perto.</p>
+    <div class="titulo-grupo">Para esquentar</div>
+    <div class="encontros" id="g3"></div>
+    <div class="caixa"><h3>Desafio do mês</h3><p>Façam os 30 encontros em 30 dias, ou um por semana durante sete meses. Marquem um ✓ em cada um. No último, joguem o nível Faísca do começo ao fim.</p></div>
+    <div class="pe">FAÍSCA · 3</div>
+  </section>
+</div>
+
+<!-- ================= BÔNUS 2 ================= -->
+<div class="bonus" id="b2">
+  <section class="folha capa"><div class="capa-in">
+    <div class="capa-selo flame"></div>
+    <div class="tag-bonus">Bônus #2</div>
+    <h1 class="t">Ritual da<br>Massagem a Dois</h1>
+    <p class="capa-sub">20 minutos para desacelerar, tocar sem pressa e se reconectar.</p>
+    <div class="lista-capa"><span>Preparação</span><span>·</span><span>7 passos</span><span>·</span><span>Variações</span></div>
+  </div><div class="assinatura">FAÍSCA</div></section>
+
+  <section class="folha pagina">
+    <div class="cab"><span>Bônus #2 · Ritual da massagem</span><span>Faísca</span></div>
+    <h2>Antes de começar</h2>
+    <p class="intro">O segredo não é técnica, é presença. Quem recebe só precisa se entregar. Quem faz só precisa ir devagar, bem mais devagar do que acha necessário.</p>
+    <div class="prep">
+      <div><b>Ambiente</b>Luz baixa, quarto aquecido e o celular no silencioso, longe da cama.</div>
+      <div><b>Óleo</b>Óleo de amêndoas ou de coco, ou um creme hidratante. Aqueça nas mãos antes de tocar.</div>
+      <div><b>Toalha</b>Uma toalha embaixo protege o lençol e deixa tudo mais confortável.</div>
+      <div><b>Música</b>Uma playlist lenta de uns 30 minutos, para ninguém precisar levantar.</div>
+    </div>
+    <h3>Os 7 passos</h3>
+    <div class="passos">
+      <div><div><em>2 min</em><h4>Conexão</h4><p>Quem recebe deita de bruços. Antes de qualquer movimento, apoie as duas mãos paradas nas costas e respirem juntos três vezes. Isso avisa ao corpo: agora é hora de relaxar.</p></div></div>
+      <div><div><em>3 min</em><h4>Ombros e nuca</h4><p>Com os polegares, faça círculos pequenos dos dois lados da coluna, subindo até a nuca. Nos ombros, aperte e solte como quem amassa um pão, sem pressa.</p></div></div>
+      <div><div><em>4 min</em><h4>Costas inteiras</h4><p>Mãos abertas, deslize da lombar até os ombros e volte pelas laterais, desenhando um coração. Repita até perder a conta. Mantenha sempre uma mão em contato com a pele.</p></div></div>
+      <div><div><em>3 min</em><h4>Braços e mãos</h4><p>Desça pelo braço com as duas mãos, como se estivesse vestindo uma luva. Termine massageando a palma e cada dedo, puxando de leve.</p></div></div>
+    </div>
+    <div class="pe">FAÍSCA · 1</div>
+  </section>
+
+  <section class="folha pagina">
+    <div class="cab"><span>Bônus #2 · Ritual da massagem</span><span>Faísca</span></div>
+    <div class="passos" style="counter-reset:p 4">
+      <div><div><em>3 min</em><h4>Pernas e pés</h4><p>Deslizamentos longos, do tornozelo até a coxa, subindo sempre em direção ao coração. Nos pés, pressione a sola com os polegares, do calcanhar aos dedos.</p></div></div>
+      <div><div><em>3 min</em><h4>Toque leve</h4><p>Agora só as pontas dos dedos, quase sem encostar, percorrendo o corpo todo. É aqui que o relaxamento vira arrepio.</p></div></div>
+      <div><div><em>2 min</em><h4>Fechamento</h4><p>Volte às mãos paradas nas costas, como no começo. Um beijo na nuca encerra o ritual. Depois, troquem de lugar ou deixem a noite seguir o rumo dela.</p></div></div>
+    </div>
+    <h3>Variações para outras noites</h3>
+    <ul>
+      <li><b>De olhos vendados:</b> quem recebe não sabe onde vai ser o próximo toque.</li>
+      <li><b>Quente e frio:</b> alterne as mãos aquecidas no óleo com um cubo de gelo passado rapidamente.</li>
+      <li><b>Pede que eu faço:</b> quem recebe guia com palavras: mais forte, mais devagar, mais para cima.</li>
+      <li><b>Só com a boca:</b> repita o passo 6 trocando as pontas dos dedos por beijos.</li>
+    </ul>
+    <div class="caixa">
+      <h3>O combinado de ouro</h3>
+      <p>Perguntem antes, durante e depois: "está bom assim?". Qualquer desconforto encerra a massagem, sem drama. Evitem pressionar a coluna diretamente e pulem regiões doloridas ou machucadas.</p>
+    </div>
+    <div class="pe">FAÍSCA · 2</div>
+  </section>
+</div>
+
+<!-- ================= BÔNUS 3 ================= -->
+<div class="bonus" id="b3">
+  <section class="folha capa"><div class="capa-in">
+    <div class="capa-selo flame"></div>
+    <div class="tag-bonus">Bônus #3</div>
+    <h1 class="t">Bilhetes<br>Secretos</h1>
+    <p class="capa-sub">18 recados para imprimir, recortar e esconder pela casa.</p>
+    <div class="lista-capa"><span>Carinho</span><span>·</span><span>Provocação</span><span>·</span><span>Convite</span></div>
+  </div><div class="assinatura">FAÍSCA</div></section>
+
+  <section class="folha pagina">
+    <div class="cab"><span>Bônus #3 · Bilhetes secretos</span><span>Faísca</span></div>
+    <h2 style="font-size:19pt;margin-bottom:2mm">Esconda onde só seu amor vai achar</h2>
+    <p class="intro" style="margin-bottom:2mm">No bolso do casaco, dentro do livro, no espelho do banheiro, na marmita. Os escuros são para quando a intenção é esquentar.</p>
+    <div class="bilhetes" id="bil1"></div>
+    <div class="tesoura">✂ recorte pela linha tracejada</div>
+  </section>
+
+  <section class="folha pagina">
+    <div class="cab"><span>Bônus #3 · Bilhetes secretos</span><span>Faísca</span></div>
+    <div class="bilhetes" id="bil2"></div>
+    <div class="tesoura">✂ recorte pela linha tracejada</div>
+  </section>
+</div>
+
+<script src="../assets/carta.js"></script>
+<script>
+const id = (location.hash || "#b1").slice(1);
+document.getElementById(id).classList.add("on");
+document.querySelectorAll(".flame").forEach(e => e.innerHTML = FaiscaCarta.FLAME);
+
+const encontros = [
+  [ // conversar
+    ["Jantar das perguntas", "Cozinhem juntos e, a cada prato, cada um faz uma pergunta do Nível 1."],
+    ["Linha do tempo", "Desenhem num papel os momentos mais marcantes do casal. Vale rir das partes esquecidas."],
+    ["Cápsula do tempo", "Escrevam cartas para vocês mesmos lerem daqui a um ano. Guardem num envelope lacrado."],
+    ["Noite das fotos antigas", "Revejam fotos do começo do namoro e contem o que sentiam em cada uma."],
+    ["Mapa dos sonhos", "Listem 10 coisas que querem viver juntos e escolham a primeira para planejar."],
+    ["Entrevista", "Um entrevista o outro como se fosse um programa de TV. Depois invertem."],
+    ["Carta em voz alta", "Escrevam uma carta curta um para o outro e leiam olhando nos olhos."],
+    ["Noite do \"e se\"", "E se a gente morasse em outro país? E se ganhasse na loteria? Deixem a imaginação ir longe."],
+    ["Playlist do casal", "Montem juntos uma playlist com uma música para cada fase da relação."],
+    ["Café da manhã à noite", "Façam o café da manhã dos sonhos às 21h, na cama, sem pressa."]
+  ],
+  [ // divertir
+    ["Cinema de luxo", "Pipoca gourmet, luzes apagadas, ingresso feito à mão e o celular proibido na sala."],
+    ["Desafio do chef", "Cada um tem 30 minutos e só o que tiver na geladeira. O outro dá a nota."],
+    ["Piquenique na sala", "Toalha no chão, petiscos, vinho ou suco e uma vela no centro."],
+    ["Noite de jogos", "Baralho, jogo de tabuleiro ou videogame. Quem perde faz uma massagem nos pés."],
+    ["Spa em casa", "Máscara facial, escalda-pés, roupão e música calma. Um cuida do outro."],
+    ["Karaokê a dois", "Cada um escolhe uma música para cantar para o outro. Vale dedicatória."],
+    ["Viagem pela comida", "Escolham um país, cozinhem um prato de lá e coloquem música típica."],
+    ["Aula improvisada", "Aprendam juntos uma dança por vídeo: forró, salsa, tango, o que der vontade."],
+    ["Acampamento na sala", "Cabana de lençóis, lanterna, histórias e cobertor."],
+    ["Desenhem um ao outro", "Retrato em 10 minutos. Os resultados ruins são os melhores."]
+  ],
+  [ // esquentar
+    ["Jantar à luz de velas", "Arrumem-se como num primeiro encontro, mesmo sem sair de casa."],
+    ["Noite do Nível 2", "Joguem o Faísca no nível Flerte do começo ao fim, sem pular de nível."],
+    ["Banho a dois", "Sais de banho, luz baixa e nenhuma pressa de sair."],
+    ["Ritual da massagem", "Sigam o Bônus #2 do começo ao fim. Na semana seguinte, invertam."],
+    ["Dança lenta", "Só uma música, abraçados, no meio da sala. Depois vejam onde isso leva."],
+    ["Encontro de desconhecidos", "Combinem de \"se conhecer\" num bar da casa, como se fosse a primeira vez."],
+    ["Bilhetes pela casa", "Escondam os bilhetes do Bônus #3 e deixem o último no travesseiro."],
+    ["Noite da venda nos olhos", "Um fica vendado e o outro oferece sabores, cheiros e toques."],
+    ["Roupa nova, regra nova", "Um escolhe a roupa que o outro vai usar no encontro."],
+    ["Nível Faísca", "Terminem o mês com o último nível do jogo. Vocês chegaram até aqui."]
+  ]
+];
+let n = 0;
+encontros.forEach((g, gi) => {
+  document.getElementById("g" + (gi + 1)).innerHTML = g.map(([t, d]) =>
+    `<div class="enc"><b><span class="num">${String(++n).padStart(2, "0")}</span>${t}</b><span>${d}</span></div>`).join("");
+});
+
+const bilhetes = [
+  ["Carinho", "Você é a melhor parte do meu dia. Mesmo quando o dia é ruim.", 0],
+  ["Carinho", "Se eu pudesse escolher de novo, escolheria você. Todas as vezes.", 0],
+  ["Lembrete", "Respira. Você está indo muito bem. E eu tenho orgulho de você.", 0],
+  ["Carinho", "Obrigado(a) por ser casa.", 0],
+  ["Convite", "Hoje à noite: eu, você e nenhum celular. Topa?", 0],
+  ["Lembrete", "Esse bilhete vale um abraço de 30 segundos. Venha cobrar.", 0],
+  ["Provocação", "Estou pensando em você agora. E não é pensamento inocente.", 1],
+  ["Provocação", "Chega cedo hoje. Tenho planos.", 1],
+  ["Convite", "Vale um banho a dois. Sem prazo de validade, mas com pressa.", 1],
+  ["Carinho", "Eu ainda sinto frio na barriga quando você chega.", 0],
+  ["Lembrete", "Vale um café da manhã na cama, feito por mim.", 0],
+  ["Convite", "Sexta-feira é noite de Faísca. Já escolhi o nível.", 1],
+  ["Provocação", "Adivinha o que eu estou usando por baixo hoje?", 1],
+  ["Carinho", "Eu amo o seu jeito de rir das minhas piadas ruins.", 0],
+  ["Convite", "Vale uma massagem completa. Óleo por minha conta.", 1],
+  ["Provocação", "Mais tarde eu termino o que comecei hoje de manhã.", 1],
+  ["Lembrete", "Você é lindo(a). Só passando para avisar.", 0],
+  ["Carinho", "De todos os lugares do mundo, o meu preferido é do seu lado.", 0]
+];
+const bil = b => `<div class="bil ${b[2] ? "escuro" : ""}"><div class="bil-in"><div class="k">${b[0]}</div><p>${b[1]}</p><div class="ass">COM AMOR</div></div></div>`;
+document.getElementById("bil1").innerHTML = bilhetes.slice(0, 9).map(bil).join("");
+document.getElementById("bil2").innerHTML = bilhetes.slice(9).map(bil).join("");
+</script>
+</body>
+</html>

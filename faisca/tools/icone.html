@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../assets/carta.css">
+<style>html,body{margin:0}body{width:512px;height:512px;display:grid;place-items:center;
+background:repeating-linear-gradient(45deg,rgba(212,175,106,.08) 0 2px,transparent 2px 40px),repeating-linear-gradient(-45deg,rgba(212,175,106,.08) 0 2px,transparent 2px 40px),radial-gradient(70% 70% at 50% 45%,#7a0a1d 0%,#0f0406 80%)}
+.box{width:var(--s);container-type:inline-size}.fc-seal{width:100cqw;height:100cqw;border-width:1.4cqw;box-shadow:inset 0 0 0 5cqw rgba(15,4,6,.6),inset 0 0 0 5.8cqw rgba(212,175,106,.6)}
+.fc-seal .fc-flame{width:38cqw}.fc-flame path{fill:#f3dca2}</style></head>
+<body><div class="box"><div class="fc-seal" id="s"></div></div>
+<script src="../assets/carta.js"></script><script>document.getElementById('s').innerHTML=FaiscaCarta.FLAME;
+document.querySelector('.box').style.setProperty('--s',(new URLSearchParams(location.search).get('s')||'330')+'px')</script></body></html>

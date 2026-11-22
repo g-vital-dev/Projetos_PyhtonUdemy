@@ -1,0 +1,77 @@
+/* Faísca: design das cartas. Escala sozinha pelo tamanho da carta (unidades cqw). */
+.fc-card{
+  --gold:#d4af6a; --gold-hi:#f3dca2; --gold-lo:#8f6a2e; --ink:#2a1016; --paper:#f8efe5;
+  --lv:#d9a25f;
+  container-type:inline-size; position:relative; aspect-ratio:63/88; width:100%;
+  border-radius:5% / 3.6%; overflow:hidden; font-family:Inter,system-ui,sans-serif;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.fc-card.lv-1{--lv:#d9a25f}
+.fc-card.lv-2{--lv:#df5f45}
+.fc-card.lv-3{--lv:#c8102e}
+
+.fc-frame{
+  position:absolute; inset:4.2cqw; border:.45cqw solid var(--gold); border-radius:2.6cqw;
+  display:flex; flex-direction:column; align-items:center; padding:7cqw 7.5cqw 6cqw;
+}
+.fc-frame::after{
+  content:""; position:absolute; inset:1.4cqw; border:.22cqw solid rgba(212,175,106,.55);
+  border-radius:1.6cqw; pointer-events:none;
+}
+/* losangos nos cantos */
+.fc-frame i.fc-corner{position:absolute; width:2.6cqw; height:2.6cqw; background:var(--gold); transform:rotate(45deg)}
+.fc-frame i.fc-corner:nth-of-type(1){top:-1.5cqw; left:50%; margin-left:-1.3cqw}
+.fc-frame i.fc-corner:nth-of-type(2){bottom:-1.5cqw; left:50%; margin-left:-1.3cqw}
+
+.fc-flame{display:block}
+.fc-flame path{fill:currentColor}
+
+/* ---------- FRENTE ---------- */
+.fc-card.front{
+  background:
+    radial-gradient(120% 70% at 50% 0%, #fffaf3 0%, transparent 60%),
+    radial-gradient(100% 60% at 50% 110%, #efdccb 0%, transparent 70%),
+    var(--paper);
+  color:var(--ink);
+}
+.fc-top{width:100%; display:flex; align-items:center; justify-content:space-between}
+.fc-type{font-size:3.5cqw; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--lv)}
+.fc-lv{
+  width:9cqw; height:9cqw; border-radius:50%; border:.35cqw solid var(--gold); display:grid; place-items:center;
+  font-family:Fraunces,Georgia,serif; font-size:4cqw; font-weight:700; color:var(--gold-lo)
+}
+.fc-body{margin:auto 0; text-align:center; display:flex; flex-direction:column; align-items:center; gap:5cqw}
+.fc-orn{display:flex; align-items:center; gap:2.5cqw; color:var(--lv)}
+.fc-orn::before,.fc-orn::after{content:""; width:11cqw; height:.3cqw; background:linear-gradient(90deg,transparent,var(--gold))}
+.fc-orn::after{transform:scaleX(-1)}
+.fc-orn .fc-flame{width:4.2cqw}
+.fc-text{font-family:Fraunces,Georgia,serif; font-weight:500; font-size:7.6cqw; line-height:1.28; letter-spacing:-.01em; text-wrap:balance}
+.fc-text.md{font-size:6.6cqw}
+.fc-text.lg{font-size:5.8cqw}
+.fc-bottom{width:100%; display:flex; align-items:center; justify-content:space-between}
+.fc-dots{display:flex; gap:1.4cqw}
+.fc-dots b{width:2.2cqw; height:2.2cqw; border-radius:50%; border:.3cqw solid var(--gold)}
+.fc-dots b.on{background:var(--lv); border-color:var(--lv)}
+.fc-brand{font-family:Fraunces,Georgia,serif; font-size:3.4cqw; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-lo)}
+
+/* ---------- VERSO ---------- */
+.fc-card.back{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M0 0L20 20M20 0L0 20' stroke='%23d4af6a' stroke-opacity='.13' stroke-width='.6'/%3E%3C/svg%3E") center/10cqw 10cqw,
+    radial-gradient(75% 55% at 50% 45%, color-mix(in srgb, var(--lv) 55%, #1a0609) 0%, #0f0406 78%);
+  color:var(--gold);
+}
+.fc-card.back .fc-frame{justify-content:center; gap:4cqw; padding:6cqw}
+.fc-seal{
+  width:36cqw; height:36cqw; border-radius:50%; display:grid; place-items:center; position:relative;
+  border:.45cqw solid var(--gold); box-shadow:inset 0 0 0 1.6cqw rgba(15,4,6,.6), inset 0 0 0 1.85cqw rgba(212,175,106,.6);
+  background:radial-gradient(circle at 50% 35%, rgba(255,255,255,.08), transparent 60%);
+}
+.fc-seal .fc-flame{width:15cqw; color:var(--gold-hi); filter:drop-shadow(0 0 2cqw color-mix(in srgb, var(--lv) 80%, transparent))}
+.fc-name{
+  font-family:Fraunces,Georgia,serif; font-weight:700; font-size:11cqw; letter-spacing:.16em; padding-left:.16em;
+  background:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,var(--gold-lo));
+  -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1
+}
+.fc-sub{font-size:3.2cqw; letter-spacing:.34em; text-transform:uppercase; color:rgba(243,220,162,.8); text-align:center}
+.fc-sub b{display:block; font-family:Fraunces,Georgia,serif; font-size:5cqw; letter-spacing:.08em; text-transform:none; color:var(--gold-hi); font-weight:500; margin-bottom:1.2cqw}

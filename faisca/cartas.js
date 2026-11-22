@@ -68,7 +68,7 @@ window.FAISCA_NIVEIS = [
       "Escolha uma música e faça uma dança provocante para {par} por 30 segundos.",
       "Trace com o dedo o contorno da boca de {par} e termine com um beijo.",
       "Morda de leve a orelha de {par} e diga um elogio.",
-      "Vendem os olhos de {par} e dê três beijos em lugares diferentes. {par} tenta adivinhar a ordem."
+      "Vende os olhos de {par} e dê três beijos em lugares diferentes. {par} tenta adivinhar a ordem."
     ]
   },
   {
