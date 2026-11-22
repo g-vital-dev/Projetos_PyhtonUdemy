@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faísca · O jogo do casal</title>
+<meta name="description" content="Faísca é o jogo de cartas digital para casais: perguntas e desafios em 3 níveis para reacender a conexão e o desejo. Jogue no celular hoje à noite.">
+<meta name="theme-color" content="#1a0b10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1a0b10; --bg2:#24101a; --ink:#2b1218; --cream:#fff7f2; --muted:#c9a9b0;
+    --accent:#e76f51; --accent2:#f4a261; --red:#c1121f; --line:rgba(255,255,255,.12);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,sans-serif;line-height:1.55}
+  a{color:inherit}
+  .c{max-width:1080px;margin:0 auto;padding:0 16px}
+  h1,h2,h3{font-family:Fraunces,serif;font-weight:500;line-height:1.12;margin:0}
+  h2{font-size:clamp(28px,5vw,42px);margin-bottom:14px}
+  .eyebrow{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent2);font-weight:600;margin-bottom:12px}
+  .lead{color:var(--muted);font-size:18px;max-width:620px}
+  section{padding:80px 0}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:18px 30px;border-radius:16px;
+    background:linear-gradient(135deg,var(--accent),var(--red));color:#fff;text-decoration:none;font-weight:700;font-size:17px;
+    box-shadow:0 12px 34px rgba(231,111,81,.35);transition:transform .15s
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn.alt{background:transparent;border:1px solid var(--line);box-shadow:none}
+
+  /* barra topo */
+  .topo{background:var(--accent);color:#fff;text-align:center;font-size:14px;font-weight:600;padding:9px 16px}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .logo{font-family:Fraunces,serif;font-size:26px;font-weight:700}
+  .logo span{color:var(--accent)}
+
+  /* hero */
+  .hero{padding:30px 0 80px;background:radial-gradient(90% 70% at 70% 30%, #4a1626 0%, transparent 65%)}
+  .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(38px,7vw,64px);margin-bottom:18px}
+  .hero h1 em{color:var(--accent2);font-style:italic}
+  .hero .acoes{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 18px}
+  .selos{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+  .leque{position:relative;height:420px}
+  .mini{
+    position:absolute;width:230px;aspect-ratio:3/4;border-radius:20px;padding:22px;display:flex;flex-direction:column;
+    box-shadow:0 24px 60px rgba(0,0,0,.5);left:50%;top:50%
+  }
+  .mini .t{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+  .mini p{font-family:Fraunces,serif;font-size:21px;line-height:1.3;margin:auto 0}
+  .m1{background:var(--cream);color:var(--ink);transform:translate(-95%,-50%) rotate(-12deg)}
+  .m1 .t{color:#f4a261}
+  .m2{background:var(--cream);color:var(--ink);transform:translate(-50%,-55%) rotate(2deg);z-index:2}
+  .m2 .t{color:#e76f51}
+  .m3{background:linear-gradient(150deg,#c1121f,#6a0d1f);transform:translate(-5%,-45%) rotate(13deg);place-items:center;justify-content:center;text-align:center}
+  .m3 b{font-family:Fraunces,serif;font-size:38px}
+
+  /* dor */
+  .dor{background:var(--bg2)}
+  .dor .lista{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+  .box{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:24px}
+  .box .ic{font-size:28px;margin-bottom:10px}
+  .box h3{font-size:21px;margin-bottom:6px}
+  .box p{color:var(--muted);margin:0}
+
+  /* níveis */
+  .niveis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+  .nv{border-radius:22px;padding:28px;border:1px solid var(--line);position:relative;overflow:hidden}
+  .nv::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,var(--c),transparent 70%);opacity:.22}
+  .nv > *{position:relative}
+  .nv .n{font-size:13px;color:var(--muted);font-weight:600}
+  .nv h3{font-size:30px;margin:6px 0 10px}
+  .nv p{color:#e8d6da;margin:0 0 14px}
+  .nv .ex{font-family:Fraunces,serif;font-style:italic;color:#fff;border-left:2px solid var(--c);padding-left:12px}
+
+  /* demo */
+  .demo{background:var(--bg2);text-align:center}
+  .demo .lead{margin:0 auto}
+  .demoCarta{
+    max-width:340px;margin:34px auto 20px;aspect-ratio:3/4;border-radius:24px;background:var(--cream);color:var(--ink);
+    padding:28px;display:flex;flex-direction:column;text-align:left;box-shadow:0 24px 60px rgba(0,0,0,.5);transition:transform .3s
+  }
+  .demoCarta .t{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
+  .demoCarta p{font-family:Fraunces,serif;font-size:25px;line-height:1.3;margin:auto 0}
+  .demoCarta small{color:#8a6a70}
+
+  /* como funciona */
+  .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;counter-reset:p}
+  .passo{counter-increment:p}
+  .passo::before{content:counter(p);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--accent);font-weight:700;margin-bottom:14px}
+  .passo h3{font-size:20px;margin-bottom:6px}
+  .passo p{color:var(--muted);margin:0}
+
+  /* oferta */
+  .oferta{background:radial-gradient(80% 60% at 50% 0%, #4a1626, var(--bg) 70%)}
+  .planos{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:34px auto 0}
+  .plano{border-radius:24px;padding:30px;border:1px solid var(--line);background:rgba(255,255,255,.03);display:flex;flex-direction:column}
+  .plano.top{background:var(--cream);color:var(--ink);border:0;position:relative;box-shadow:0 24px 70px rgba(231,111,81,.25)}
+  .plano.top .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+  .plano h3{font-size:26px}
+  .plano ul{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:9px}
+  .plano li::before{content:"✓ ";color:var(--accent);font-weight:700}
+  .plano li.no{opacity:.45}
+  .plano li.no::before{content:"— ";color:inherit}
+  .preco{margin-top:auto}
+  .preco s{opacity:.55;font-size:15px}
+  .preco .v{font-family:Fraunces,serif;font-size:46px;font-weight:700;display:block;line-height:1.1}
+  .preco .p{font-size:14px;opacity:.7}
+  .plano .btn{margin-top:18px;width:100%}
+  .plano:not(.top) .btn{background:rgba(255,255,255,.08);box-shadow:none}
+  .pag{text-align:center;color:var(--muted);font-size:14px;margin-top:20px}
+
+  /* garantia */
+  .garantia{display:flex;gap:28px;align-items:center;max-width:820px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:24px;padding:32px}
+  .selo{flex:0 0 120px;height:120px;border-radius:50%;border:2px dashed var(--accent2);display:grid;place-items:center;text-align:center;font-family:Fraunces,serif;font-size:15px;line-height:1.2}
+  .selo b{font-size:40px;display:block}
+  .garantia p{color:var(--muted);margin:8px 0 0}
+
+  /* faq */
+  .faq{max-width:760px;margin:30px auto 0}
+  details{border-bottom:1px solid var(--line);padding:18px 0}
+  summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin:10px 0 0}
+
+  .final{text-align:center}
+  .final .lead{margin:0 auto 28px}
+  footer{border-top:1px solid var(--line);padding:30px 0 100px;color:var(--muted);font-size:13px;text-align:center}
+
+  .fixo{position:fixed;left:0;right:0;bottom:0;padding:12px 16px;background:rgba(26,11,16,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:none;z-index:10}
+  .fixo .btn{width:100%;padding:15px}
+
+  @media (max-width:860px){
+    .hero .grid,.dor .lista,.niveis,.planos{grid-template-columns:1fr}
+    .passos{grid-template-columns:1fr 1fr}
+    .leque{height:330px}
+    .mini{width:170px;padding:16px}.mini p{font-size:16px}.m3 b{font-size:28px}
+    .m1{transform:translate(-88%,-50%) rotate(-10deg)}.m3{transform:translate(-12%,-45%) rotate(11deg)}
+    section{padding:60px 0}
+    .fixo{display:block}
+    .garantia{flex-direction:column;text-align:center}
+  }
+  @media (max-width:480px){ .passos{grid-template-columns:1fr} .hero .acoes .btn{width:100%} }
+</style>
+</head>
+<body>
+
+<div class="topo">🔥 Oferta de lançamento: <span id="topoDesc">pacote completo com desconto</span></div>
+
+<header class="c">
+  <nav>
+    <div class="logo">Faís<span>ca</span></div>
+    <a class="btn alt" href="#oferta" style="padding:11px 18px;font-size:15px">Quero jogar</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="c grid">
+    <div>
+      <div class="eyebrow">Jogo de cartas digital para casais</div>
+      <h1>Desliguem a série.<br>Hoje a noite é <em>de vocês</em>.</h1>
+      <p class="lead">Perguntas que aproximam e desafios que esquentam, em 3 níveis que sobem no ritmo de vocês. Abre no celular, sem instalar nada, e começa em 30 segundos.</p>
+      <div class="acoes">
+        <a class="btn" href="#oferta">Quero o Faísca</a>
+        <a class="btn alt" href="#demo">Virar uma carta grátis</a>
+      </div>
+      <div class="selos"><span>📱 Acesso imediato</span><span>🔒 Compra discreta</span><span>💛 Garantia de 7 dias</span></div>
+    </div>
+    <div class="leque" aria-hidden="true">
+      <div class="mini m1"><span class="t">💬 Conexão</span><p>Qual lembrança nossa você gostaria de viver de novo?</p></div>
+      <div class="mini m2"><span class="t">🔥 Flerte</span><p>Sussurre no ouvido do seu amor o que quer fazer mais tarde.</p></div>
+      <div class="mini m3"><b>Faísca</b><span class="t" style="opacity:.8;margin-top:6px">Nível 3</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="dor">
+  <div class="c">
+    <div class="eyebrow">Se isso parece familiar…</div>
+    <h2>A rotina não acaba com o amor.<br>Ela só apaga a faísca.</h2>
+    <div class="lista">
+      <div class="box"><div class="ic">📺</div><h3>Noites no automático</h3><p>Cada um no seu celular, a mesma série, o mesmo "boa noite". Juntos, mas longe.</p></div>
+      <div class="box"><div class="ic">🤐</div><h3>Desejos não ditos</h3><p>Aquilo que você queria propor, mas não sabe como puxar o assunto sem ficar estranho.</p></div>
+      <div class="box"><div class="ic">🕯️</div><h3>Saudade do começo</h3><p>Do frio na barriga, da curiosidade de descobrir o outro. Ela pode voltar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NÍVEIS -->
+<section>
+  <div class="c">
+    <div class="eyebrow">3 níveis, um ritmo só de vocês</div>
+    <h2>Comece conversando.<br>Termine onde quiserem.</h2>
+    <p class="lead">Cada nível mistura perguntas e desafios. Vocês escolhem onde começar e quando subir.</p>
+    <div class="niveis">
+      <div class="nv" style="--c:#f4a261"><div class="n">Nível 1</div><h3>💬 Conexão</h3><p>Memórias, sonhos e aquilo que vocês nunca disseram. Para se redescobrirem.</p><div class="ex">"O que você mais admira em mim e quase nunca fala?"</div></div>
+      <div class="nv" style="--c:#e76f51"><div class="n">Nível 2</div><h3>🔥 Flerte</h3><p>Provocação, toque e tensão. O clima começa a esquentar.</p><div class="ex">"Fique a 10 cm da boca do seu amor por 30 segundos sem beijar."</div></div>
+      <div class="nv" style="--c:#c1121f"><div class="n">Nível 3</div><h3>✨ Faísca</h3><p>Ousadia e entrega, sempre dentro dos combinados de vocês.</p><div class="ex">"Por 3 minutos, quem dá as ordens é o seu par."</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo" id="demo">
+  <div class="c">
+    <div class="eyebrow">Experimente agora</div>
+    <h2>Vire uma carta do Nível 1</h2>
+    <p class="lead">É assim que funciona no jogo completo, com o nome de vocês em cada carta.</p>
+    <div class="demoCarta" id="demoCarta"><span class="t" id="demoTipo">💬 Pergunta</span><p id="demoTexto">Toque em "virar outra" para ver uma carta.</p><small>Faísca · Conexão</small></div>
+    <a class="btn alt" href="#" id="demoBtn">Virar outra carta</a>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section>
+  <div class="c">
+    <div class="eyebrow">Como funciona</div>
+    <h2>Do pagamento à primeira carta em minutos</h2>
+    <div class="passos">
+      <div class="passo"><h3>Garanta o acesso</h3><p>Pagamento por Pix ou cartão, em ambiente seguro.</p></div>
+      <div class="passo"><h3>Receba o link</h3><p>O acesso chega no seu e-mail logo após a confirmação.</p></div>
+      <div class="passo"><h3>Digitem os nomes</h3><p>Escolham o nível e o tipo de carta: perguntas, desafios ou misturado.</p></div>
+      <div class="passo"><h3>Passem o celular</h3><p>Um vira a carta, o outro responde. Com timer para os desafios.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta" id="oferta">
+  <div class="c" style="text-align:center">
+    <div class="eyebrow">Escolha seu pacote</div>
+    <h2>Menos que um jantar fora.<br>Dura muito mais.</h2>
+    <div class="planos" style="text-align:left">
+      <div class="plano">
+        <h3>Essencial</h3>
+        <ul>
+          <li>Nível 1: Conexão</li>
+          <li>Nível 2: Flerte</li>
+          <li>Jogo no celular, sem instalar</li>
+          <li class="no">Nível 3: Faísca</li>
+          <li class="no">Bônus: 30 encontros em casa</li>
+        </ul>
+        <div class="preco"><span class="v" data-preco="essencial"></span><span class="p">pagamento único</span></div>
+        <a class="btn" data-checkout="essencial" href="#">Quero o Essencial</a>
+      </div>
+      <div class="plano top">
+        <span class="tag">Mais escolhido</span>
+        <h3>Completo</h3>
+        <ul>
+          <li>Nível 1: Conexão</li>
+          <li>Nível 2: Flerte</li>
+          <li>Nível 3: Faísca</li>
+          <li>Jogo no celular, sem instalar</li>
+          <li>Bônus: guia "30 encontros em casa"</li>
+          <li>Novas cartas sem custo extra</li>
+        </ul>
+        <div class="preco"><s data-de="completo"></s><span class="v" data-preco="completo"></span><span class="p">pagamento único</span></div>
+        <a class="btn" data-checkout="completo" href="#">Quero o Completo</a>
+      </div>
+    </div>
+    <p class="pag">🔒 Pagamento seguro · Pix ou cartão · Na fatura aparece um nome discreto</p>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section style="padding-top:0">
+  <div class="c">
+    <div class="garantia">
+      <div class="selo"><span><b>7</b>dias de<br>garantia</span></div>
+      <div>
+        <h3 style="font-size:26px">Jogue sem risco</h3>
+        <p>Se em até 7 dias o Faísca não mudar a noite de vocês, é só mandar um e-mail e devolvemos 100% do valor. Sem perguntas e sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="c">
+    <h2 style="text-align:center">Perguntas frequentes</h2>
+    <div class="faq">
+      <details><summary>É um produto físico?</summary><p>Não. O Faísca é um jogo digital: você joga pelo navegador do celular, sem baixar aplicativo. Nada chega na sua casa, então é 100% discreto.</p></details>
+      <details><summary>Como recebo o acesso?</summary><p>Logo após a confirmação do pagamento você recebe por e-mail o link do jogo. No Pix, a confirmação costuma ser imediata.</p></details>
+      <details><summary>É muito explícito?</summary><p>Não. O Faísca é romântico e picante, mas sem ser vulgar. Os níveis sobem aos poucos e vocês escolhem até onde ir. Qualquer um pode pular uma carta.</p></details>
+      <details><summary>Serve para casais de longa data?</summary><p>Principalmente. O Nível 1 foi feito para casais que acham que já sabem tudo um do outro e descobrem que não.</p></details>
+      <details><summary>Funciona para qualquer casal?</summary><p>Sim. As cartas usam os nomes que vocês digitam e servem para qualquer configuração de casal.</p></details>
+      <details><summary>Posso jogar quantas vezes quiser?</summary><p>Sim. O acesso é vitalício e as cartas são embaralhadas a cada partida.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="c">
+    <h2>A próxima noite pode ser diferente.</h2>
+    <p class="lead">Basta uma carta para a conversa mudar de tom.</p>
+    <a class="btn" href="#oferta">Quero acender a faísca</a>
+  </div>
+</section>
+
+<footer>
+  <div class="c">
+    © <span id="ano"></span> Faísca · Produto digital para maiores de 18 anos · <a href="#">Termos</a> · <a href="#">Privacidade</a> · <a href="#" id="contato">Contato</a>
+  </div>
+</footer>
+
+<div class="fixo"><a class="btn" href="#oferta">Quero o Faísca</a></div>
+
+<script src="cartas.js"></script>
+<script>
+// ===== CONFIGURE AQUI: preços e links do seu checkout (Kiwify, Hotmart, Eduzz, Yampi...) =====
+const CONFIG = {
+  essencial: { preco: "R$ 19,90", checkout: "https://SEU-CHECKOUT/essencial" },
+  completo:  { preco: "R$ 29,90", de: "R$ 59,90", checkout: "https://SEU-CHECKOUT/completo" },
+  emailContato: "contato@seudominio.com.br",
+  textoTopo: "pacote completo com 50% de desconto"
+};
+// ============================================================================================
+
+document.querySelectorAll("[data-preco]").forEach(el => el.textContent = CONFIG[el.dataset.preco].preco);
+document.querySelectorAll("[data-de]").forEach(el => el.textContent = "De " + CONFIG[el.dataset.de].de);
+document.querySelectorAll("[data-checkout]").forEach(el => el.href = CONFIG[el.dataset.checkout].checkout);
+document.getElementById("topoDesc").textContent = CONFIG.textoTopo;
+document.getElementById("contato").href = "mailto:" + CONFIG.emailContato;
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+// demo: cartas do nível 1, com nomes genéricos
+const n1 = window.FAISCA_NIVEIS[0];
+const demo = [...n1.perguntas.map(t => ["💬 Pergunta", t]), ...n1.desafios.map(t => ["🔥 Desafio", t])];
+let ultimo = -1;
+function virar(e){
+  if (e) e.preventDefault();
+  let i; do { i = Math.floor(Math.random() * demo.length); } while (i === ultimo && demo.length > 1);
+  ultimo = i;
+  const card = document.getElementById("demoCarta");
+  card.style.transform = "rotateY(90deg)";
+  setTimeout(() => {
+    document.getElementById("demoTipo").textContent = demo[i][0];
+    document.getElementById("demoTexto").textContent = demo[i][1].replaceAll("{par}", "seu amor").replaceAll("{voce}", "você");
+    card.style.transform = "none";
+  }, 300);
+}
+document.getElementById("demoBtn").onclick = virar;
+document.getElementById("demoCarta").onclick = virar;
+virar();
+</script>
+</body>
+</html>
