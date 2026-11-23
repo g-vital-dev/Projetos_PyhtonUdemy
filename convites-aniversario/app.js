@@ -31,6 +31,14 @@
   ];
 
   const TEMPLATES = [
+    { id: 'fazendinha-rosa', nome: 'Fazendinha Rosa', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/fazendinha-rosa.jpg', pre: 'Vai ter festa na fazendinha da', swatch: '#f7e4ea url(assets/modelos/fazendinha-rosa.jpg) center/cover', icon: '' },
+    { id: 'futebol-estadio', nome: 'Craque no Estádio', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/futebol-estadio.jpg', pre: 'Entre em campo com', swatch: '#0d2350 url(assets/modelos/futebol-estadio.jpg) center/cover', icon: '' },
+    { id: 'dinos-selva', nome: 'Dinos na Selva', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/dinos-selva.jpg', pre: 'Festa jurássica de', swatch: '#cfeede url(assets/modelos/dinos-selva.jpg) center/cover', icon: '' },
+    { id: 'mar-azul', nome: 'Fundo do Mar Azul', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/mar-azul.jpg', pre: 'Mergulhe na festa de', swatch: '#d7f0f4 url(assets/modelos/mar-azul.jpg) center/cover', icon: '' },
+    { id: 'pijama-noite', nome: 'Festa do Pijama', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/pijama.jpg', pre: 'Traga o travesseiro! Festa do pijama de', swatch: '#e4d6f3 url(assets/modelos/pijama.jpg) center/cover', icon: '' },
+    { id: 'boiadeira-rosa', nome: 'Boiadeira', cat: 'Infantil', premium: true, ilustrado: true, img: 'assets/modelos/boiadeira.jpg', pre: 'Aniversário da boiadeira', swatch: '#f6cfd3 url(assets/modelos/boiadeira.jpg) center/cover', icon: '' },
+    { id: 'quinze-anos', nome: 'Meus 15 Anos', cat: '15 anos & Teen', premium: true, ilustrado: true, img: 'assets/modelos/quinze-anos.jpg', pre: 'Celebre comigo os meus', swatch: '#e7d6ee url(assets/modelos/quinze-anos.jpg) center/cover', icon: '' },
+    { id: 'boteco', nome: 'Boteco do Aniversariante', cat: 'Adulto', premium: true, ilustrado: true, img: 'assets/modelos/boteco.jpg', pre: 'Bora pro boteco do', swatch: '#f3d27a url(assets/modelos/boteco.jpg) center/cover', icon: '' },
     { id: 'princesa-jardim', nome: 'Princesa do Jardim', cat: 'Infantil', premium: true, ilustrado: true, img: 'assets/modelos/princesa.jpg', pre: 'Celebre comigo', swatch: '#f6e9f2 url(assets/modelos/princesa.jpg) center/cover', icon: '' },
     { id: 'herois-cidade', nome: 'Heróis da Cidade', cat: 'Infantil', premium: true, ilustrado: true, img: 'assets/modelos/herois.jpg', pre: 'Missão especial: festa de', swatch: '#6a4fc4 url(assets/modelos/herois.jpg) center/cover', icon: '' },
     { id: 'safari-aquarela', nome: 'Safari Aquarela', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/safari-aquarela.jpg', pre: 'Venha para a aventura de', swatch: '#f3eee4 url(assets/modelos/safari-aquarela.jpg) center/cover', icon: '' },

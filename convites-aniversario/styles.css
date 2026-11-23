@@ -703,3 +703,97 @@ body.guest-mode .nav .btn::after { content: " também"; }
 .ilu-unicornio-nuvens .when { font: 800 3.2cqw "Baloo 2"; color: #7a3f86; background: rgba(255,255,255,.75); padding: 1.4cqw 4cqw; border-radius: 4cqw; }
 .ilu-unicornio-nuvens .w-day b { font: 800 7.5cqw/1 "Baloo 2"; color: #d95fae; }
 .ilu-unicornio-nuvens .where { font: 700 3.1cqw "Baloo 2"; color: #7a3f86; }
+
+
+/* ===== Leva 2 de modelos ilustrados (Figma IA) ===== */
+.ilu-fazendinha-rosa .ilu-zone { top: 15%; bottom: 44%; left: 20%; right: 21%; }
+.ilu-fazendinha-rosa .pre { font: 700 2.8cqw "Baloo 2"; color: #a5737a; text-transform: uppercase; letter-spacing: .08em; }
+.ilu-fazendinha-rosa .name { font: 800 12.5cqw/1 "Baloo 2"; color: #e0708e; margin-top: 1cqw; text-shadow: 0 .5cqw 0 #fff; }
+.ilu-fazendinha-rosa .age { margin-top: 1.4cqw; font: 700 3.4cqw "Baloo 2"; color: #fff; background: #e9a0b3; padding: .4cqw 4cqw; border-radius: 99px; }
+.ilu-fazendinha-rosa .msg { font: 500 3cqw/1.3 Fredoka; color: #8a6a60; }
+.ilu-fazendinha-rosa .when { font: 700 3cqw "Baloo 2"; color: #7a5a50; text-transform: uppercase; }
+.ilu-fazendinha-rosa .w-day { padding: 0 3cqw; border-left: .4cqw solid #e9a0b3; border-right: .4cqw solid #e9a0b3; }
+.ilu-fazendinha-rosa .w-day b { font: 800 7.5cqw/1 "Baloo 2"; color: #e0708e; }
+.ilu-fazendinha-rosa .where { font: 600 2.9cqw Fredoka; color: #7a5a50; }
+
+.ilu-futebol-estadio .ilu-zone { top: 9%; bottom: 57%; left: 14%; right: 14%; color: #fff; }
+.ilu-futebol-estadio .pre { font: 400 3.6cqw "Lilita One"; color: #ffd23f; text-transform: uppercase; letter-spacing: .12em; text-shadow: 0 .4cqw 1cqw rgba(0,0,0,.6); }
+.ilu-futebol-estadio .name { font: 400 13cqw/1 "Lilita One"; text-transform: uppercase; color: #fff; -webkit-text-stroke: .5cqw #0b1f4d; text-shadow: 0 1.1cqw 0 #0b1f4d, 0 2cqw 3cqw rgba(0,0,0,.5); }
+.ilu-futebol-estadio .age { font: 400 4cqw "Lilita One"; text-transform: uppercase; color: #ffd23f; text-shadow: 0 .5cqw 0 #0b1f4d; }
+.ilu-futebol-estadio .age b { font-size: 8cqw; }
+.ilu-futebol-estadio .msg { font: 700 3cqw/1.3 Inter; color: #fff; text-shadow: 0 .4cqw 1.2cqw rgba(0,0,0,.8); }
+.ilu-futebol-estadio .when { background: rgba(6, 18, 48, .85); border: .5cqw solid #ffd23f; border-radius: 2cqw; padding: 1.2cqw 3.4cqw; font: 400 3.2cqw "Lilita One"; text-transform: uppercase; }
+.ilu-futebol-estadio .w-day { padding: 0 3cqw; border-left: .4cqw solid #ffd23f; border-right: .4cqw solid #ffd23f; }
+.ilu-futebol-estadio .w-day b { font: 400 6.5cqw/1 Bungee; color: #ffd23f; }
+.ilu-futebol-estadio .where { font: 700 3cqw Inter; text-shadow: 0 .4cqw 1.2cqw rgba(0,0,0,.8); }
+
+.ilu-dinos-selva .ilu-zone { top: 11%; bottom: 50%; left: 20%; right: 20%; }
+.ilu-dinos-selva .pre { font: 800 3.2cqw "Baloo 2"; color: #2f6b3a; text-transform: uppercase; letter-spacing: .08em; }
+.ilu-dinos-selva .name { font: 400 13cqw/1 "Lilita One"; color: #ff8a3d; -webkit-text-stroke: .55cqw #2f5a1f; text-shadow: 0 1.1cqw 0 #2f5a1f; text-transform: uppercase; }
+.ilu-dinos-selva .age { margin-top: 1.4cqw; font: 400 3.6cqw "Lilita One"; color: #fff; background: #2f8f4e; border-radius: 3cqw; padding: .4cqw 3.6cqw .8cqw; text-transform: uppercase; box-shadow: 0 .8cqw 0 #1f5e33; }
+.ilu-dinos-selva .age b { font-size: 6.5cqw; }
+.ilu-dinos-selva .msg { font: 700 3cqw/1.3 "Baloo 2"; color: #24502d; }
+.ilu-dinos-selva .when { font: 800 3cqw "Baloo 2"; color: #24502d; text-transform: uppercase; background: rgba(255,255,255,.7); border-radius: 3cqw; padding: .8cqw 3cqw; }
+.ilu-dinos-selva .w-day { padding: 0 2.6cqw; border-left: .4cqw solid #2f8f4e; border-right: .4cqw solid #2f8f4e; }
+.ilu-dinos-selva .w-day b { font: 400 7cqw/1 "Lilita One"; color: #ff8a3d; }
+.ilu-dinos-selva .where { font: 700 3cqw "Baloo 2"; color: #24502d; }
+
+.ilu-mar-azul .ilu-zone { top: 11%; bottom: 42%; left: 12%; right: 12%; color: #1d4a72; }
+.ilu-mar-azul .pre { font: 700 3.2cqw "Baloo 2"; color: #3f7aa8; text-transform: uppercase; letter-spacing: .12em; }
+.ilu-mar-azul .name { font: 800 15cqw/1 "Baloo 2"; color: #1d4a72; text-shadow: 0 .6cqw 0 #fff, 0 1.6cqw 2.4cqw rgba(29, 74, 114, .25); }
+.ilu-mar-azul .age { margin-top: 1cqw; font: 700 3.6cqw "Baloo 2"; color: #fff; background: linear-gradient(90deg, #3f9fd1, #2b78b8); padding: .4cqw 4.6cqw; border-radius: 99px; text-transform: uppercase; letter-spacing: .1em; }
+.ilu-mar-azul .msg { font: 500 3.2cqw/1.3 Fredoka; color: #2d5f86; }
+.ilu-mar-azul .when { gap: 3cqw; }
+.ilu-mar-azul .when > span { width: 15cqw; height: 15cqw; border-radius: 50%; justify-content: center; background: radial-gradient(circle at 35% 30%, #fff, #e6f6ff 60%, #c6e6fb); box-shadow: inset 0 0 0 .4cqw rgba(63, 159, 209, .5), 0 .8cqw 2cqw rgba(29, 74, 114, .2); font: 700 2.8cqw "Baloo 2"; color: #2b78b8; }
+.ilu-mar-azul .w-wd { font-size: 2.4cqw !important; }
+.ilu-mar-azul .w-day b { font: 800 5.6cqw/1 "Baloo 2"; color: #1d4a72; }
+.ilu-mar-azul .where { font: 600 3cqw Fredoka; color: #2d5f86; }
+
+.ilu-pijama-noite .ilu-zone { top: 13%; bottom: 44%; left: 10%; right: 10%; }
+.ilu-pijama-noite .pre { font: 700 3.1cqw "Baloo 2"; color: #7d5fae; text-transform: uppercase; letter-spacing: .06em; }
+.ilu-pijama-noite .name { font: 400 16cqw/1.2 Pacifico; color: #fff; text-shadow: .5cqw .5cqw 0 #b07fd8, -.5cqw -.5cqw 0 #b07fd8, .5cqw -.5cqw 0 #b07fd8, -.5cqw .5cqw 0 #b07fd8, 0 1.3cqw 0 #8a5fb8, 0 2.2cqw 3cqw rgba(138, 95, 184, .35); }
+.ilu-pijama-noite .age { font: 800 3.6cqw "Baloo 2"; color: #fff; background: linear-gradient(90deg, #f7a8cf, #b9a2f2); padding: .4cqw 4.6cqw; border-radius: 99px; text-transform: uppercase; letter-spacing: .1em; }
+.ilu-pijama-noite .msg { font: 700 3.1cqw/1.3 "Baloo 2"; color: #6a4f96; }
+.ilu-pijama-noite .when { font: 800 3cqw "Baloo 2"; color: #6a4f96; background: rgba(255,255,255,.72); padding: 1.2cqw 4cqw; border-radius: 4cqw; }
+.ilu-pijama-noite .w-day b { font: 800 7cqw/1 "Baloo 2"; color: #d96aa8; }
+.ilu-pijama-noite .where { font: 700 3cqw "Baloo 2"; color: #6a4f96; }
+
+.ilu-boiadeira-rosa .ilu-zone { top: 8%; bottom: 44%; left: 9%; right: 9%; }
+.ilu-boiadeira-rosa .pre { font: 400 3.6cqw Rye; color: #8a3b52; }
+.ilu-boiadeira-rosa .name { font: 400 14cqw/1.05 Rye; color: #d63b74; text-shadow: 0 .7cqw 0 #fff, 0 1.4cqw 0 #7a2a45, 0 2.2cqw 3cqw rgba(122, 42, 69, .3); }
+.ilu-boiadeira-rosa .age { margin-top: 1.6cqw; font: 400 3.8cqw Rye; color: #fff; background: #7a4a2a; padding: .8cqw 5cqw; border-radius: 1.4cqw; border: .5cqw dashed #f4c27a; }
+.ilu-boiadeira-rosa .age b { font-size: 5.6cqw; }
+.ilu-boiadeira-rosa .msg { font: 700 3.2cqw/1.3 "Baloo 2"; color: #7a2a45; }
+.ilu-boiadeira-rosa .when { font: 800 3.2cqw "Baloo 2"; color: #7a2a45; text-transform: uppercase; }
+.ilu-boiadeira-rosa .w-day { padding: 0 3cqw; border-left: .5cqw solid #d63b74; border-right: .5cqw solid #d63b74; }
+.ilu-boiadeira-rosa .w-day b { font: 400 7.5cqw/1 Rye; color: #d63b74; }
+.ilu-boiadeira-rosa .where { font: 700 3cqw "Baloo 2"; color: #7a2a45; }
+
+.ilu-quinze-anos .ilu-zone { top: 30%; bottom: 25%; left: 21%; right: 21%; color: #7a4a6e; }
+.ilu-quinze-anos .pre { font: 600 2.7cqw Inter; letter-spacing: .22em; text-transform: uppercase; color: #b07a95; }
+.ilu-quinze-anos .age { order: -1; font: 600 2.8cqw Inter; letter-spacing: .3em; text-transform: uppercase; color: #b07a95; }
+.ilu-quinze-anos .age b { display: block; font: 700 18cqw/1 "Playfair Display"; letter-spacing: 0; background: linear-gradient(180deg, #f3c6a6, #c98a8a 55%, #9a5f7a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ilu-quinze-anos .ilu-head { order: 0; }
+.ilu-quinze-anos .ilu-body { display: contents; }
+.ilu-quinze-anos .ilu-zone { display: flex; }
+.ilu-quinze-anos .name { font: 700 13cqw/1.15 "Dancing Script"; color: #9a4f7e; }
+.ilu-quinze-anos .msg { font: italic 400 3cqw/1.35 "Playfair Display"; color: #7a4a6e; }
+.ilu-quinze-anos .when { font: 600 2.7cqw Inter; letter-spacing: .12em; text-transform: uppercase; }
+.ilu-quinze-anos .w-day { padding: 0 3cqw; border-left: .3cqw solid #d8a7b8; border-right: .3cqw solid #d8a7b8; }
+.ilu-quinze-anos .w-day b { font: 700 6.5cqw/1 "Playfair Display"; color: #9a4f7e; letter-spacing: 0; }
+.ilu-quinze-anos .where { font: 500 2.8cqw Inter; color: #7a4a6e; }
+
+.ilu-boteco .ilu-zone { top: 14%; bottom: 50%; left: 22%; right: 22%; color: #3d2a12; }
+.ilu-boteco .pre { font: 400 3.2cqw "Lilita One"; color: #2f7d3a; text-transform: uppercase; letter-spacing: .06em; }
+.ilu-boteco .name { font: 400 12.5cqw/1 "Lilita One"; color: #e0a10c; -webkit-text-stroke: .5cqw #3d2a12; text-shadow: 0 1cqw 0 #3d2a12; text-transform: uppercase; }
+.ilu-boteco .age { margin-top: 1.2cqw; font: 400 3.6cqw "Lilita One"; color: #fff; background: #2f7d3a; padding: .4cqw 4cqw .6cqw; border-radius: 1.4cqw; text-transform: uppercase; }
+.ilu-boteco .age b { font-size: 6cqw; }
+.ilu-boteco .msg { font: 700 3cqw/1.3 "Baloo 2"; color: #4a3418; }
+.ilu-boteco .when { font: 400 3cqw "Lilita One"; text-transform: uppercase; color: #3d2a12; }
+.ilu-boteco .w-day { padding: 0 2.6cqw; border-left: .4cqw solid #2f7d3a; border-right: .4cqw solid #2f7d3a; }
+.ilu-boteco .w-day b { font-size: 7cqw; color: #c0392b; }
+.ilu-boteco .where { font: 700 2.9cqw "Baloo 2"; color: #4a3418; }
+.ilu-quinze-anos .ilu-head .pre { order: -2; }
+.ilu-quinze-anos .ilu-head { display: contents; }
+.ilu-quinze-anos .pre { order: -2; margin-bottom: 1cqw; }
+.ilu-boteco .ilu-zone { top: 16.5%; }
