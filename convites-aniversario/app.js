@@ -31,6 +31,10 @@
   ];
 
   const TEMPLATES = [
+    { id: 'princesa-jardim', nome: 'Princesa do Jardim', cat: 'Infantil', premium: true, ilustrado: true, img: 'assets/modelos/princesa.jpg', pre: 'Celebre comigo', swatch: '#f6e9f2 url(assets/modelos/princesa.jpg) center/cover', icon: '' },
+    { id: 'herois-cidade', nome: 'Heróis da Cidade', cat: 'Infantil', premium: true, ilustrado: true, img: 'assets/modelos/herois.jpg', pre: 'Missão especial: festa de', swatch: '#6a4fc4 url(assets/modelos/herois.jpg) center/cover', icon: '' },
+    { id: 'safari-aquarela', nome: 'Safari Aquarela', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/safari-aquarela.jpg', pre: 'Venha para a aventura de', swatch: '#f3eee4 url(assets/modelos/safari-aquarela.jpg) center/cover', icon: '' },
+    { id: 'unicornio-nuvens', nome: 'Unicórnio nas Nuvens', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/unicornio-nuvens.jpg', pre: 'Um dia mágico para', swatch: '#ecd9f7 url(assets/modelos/unicornio-nuvens.jpg) center/cover', icon: '' },
     { id: 'fazenda-sonhos', nome: 'Fazendinha dos Sonhos', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/fazendinha.jpg', pre: 'Vai ter festa na fazendinha!', swatch: '#f3ead9 url(assets/modelos/fazendinha.jpg) center/cover', icon: '' },
     { id: 'corrida-deserto', nome: 'Corrida no Deserto', cat: 'Infantil', premium: true, ilustrado: true, img: 'assets/modelos/corrida.jpg', pre: '', swatch: '#c9682f url(assets/modelos/corrida.jpg) center/cover', icon: '' },
     { id: 'mar-encantado', nome: 'Fundo do Mar Encantado', cat: 'Infantil', premium: false, ilustrado: true, img: 'assets/modelos/mar.jpg', pre: 'O fundo do mar está em festa!', swatch: '#dff4f2 url(assets/modelos/mar.jpg) center/cover', icon: '' },
@@ -91,9 +95,9 @@
   const tplById = (id) => TEMPLATES.find((t) => t.id === id) || TEMPLATES[0];
 
   const SAMPLES = [
-    { id: 'demo1', tpl: 'fazenda-sonhos', nome: 'Clarice', idade: '2', data: nextDate(25), hora: '15:00', local: 'Buffet Pequenos Exploradores', endereco: 'Av. Paulista, 1000 - São Paulo, SP', msg: 'Traga seu chapéu de palha e venha se divertir!', plano: 'festa' },
-    { id: 'demo2', tpl: 'corrida-deserto', nome: 'Theo', idade: '7', data: nextDate(40), hora: '21:00', local: 'Espaço Lumière', endereco: 'Rua Augusta, 500 - São Paulo, SP', msg: 'Prepare o motor: a festa vai ser em alta velocidade!', plano: 'festa' },
-    { id: 'demo3', tpl: 'mar-encantado', nome: 'Julieta', idade: '3', data: nextDate(60), hora: '20:00', local: 'Restaurante Villa', endereco: 'Rua Oscar Freire, 200 - São Paulo, SP', msg: 'Mergulhe nessa alegria com a gente!', plano: 'festaplus' },
+    { id: 'demo1', tpl: 'safari-aquarela', nome: 'Theo', idade: '2', data: nextDate(25), hora: '15:00', local: 'Buffet Pequenos Exploradores', endereco: 'Av. Paulista, 1000 - São Paulo, SP', msg: 'Venha viver essa aventura com a gente!', plano: 'festa' },
+    { id: 'demo2', tpl: 'herois-cidade', nome: 'Miguel', idade: '7', data: nextDate(40), hora: '21:00', local: 'Espaço Lumière', endereco: 'Rua Augusta, 500 - São Paulo, SP', msg: 'Prepare sua capa: a missão é comemorar!', plano: 'festa' },
+    { id: 'demo3', tpl: 'princesa-jardim', nome: 'Helena', idade: '5', data: nextDate(60), hora: '20:00', local: 'Restaurante Villa', endereco: 'Rua Oscar Freire, 200 - São Paulo, SP', msg: 'Um dia encantado no meu jardim!', plano: 'festaplus' },
   ];
 
   // ---------- Utilidades ----------
@@ -337,7 +341,7 @@
     </div></section>
 
     <section style="background:var(--surface)"><div class="container showcase reverse">
-      <div class="showcase-card">${cardHTML({ ...SAMPLES[2], tpl: 'castelo', nome: 'Helena', idade: '4', msg: 'Arte exclusiva feita para você' }, { anim: true })}</div>
+      <div class="showcase-card">${cardHTML({ ...SAMPLES[2], tpl: 'unicornio-nuvens', nome: 'Alice', idade: '4', msg: 'Arte exclusiva feita para você' }, { anim: true })}</div>
       <div>
         <span class="eyebrow">🎨 Sob medida</span>
         <h2>Quer um convite único? A gente cria para você</h2>

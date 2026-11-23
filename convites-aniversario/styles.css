@@ -657,3 +657,49 @@ body.guest-mode .nav .btn::after { content: " também"; }
 .ilu-brinde .w-day { padding: 0 3cqw; border-left: .3cqw solid #d9b45a; border-right: .3cqw solid #d9b45a; }
 .ilu-brinde .w-day b { font: 700 7cqw/1 "Playfair Display"; color: #f7d774; letter-spacing: 0; }
 .ilu-brinde .where { font: 500 3.1cqw Inter; color: #e9dcb6; }
+
+
+/* ===== Modelos ilustrados exclusivos (Figma IA) ===== */
+/* Princesa do Jardim — texto dentro da moldura oval dourada */
+.ilu-princesa-jardim .ilu-zone { top: 10%; bottom: 52%; left: 27%; right: 27%; }
+.ilu-princesa-jardim .pre { font: 600 3.3cqw/1.2 "Dancing Script"; color: #a8557f; }
+.ilu-princesa-jardim .name { font: 700 12cqw/1.1 "Dancing Script"; background: linear-gradient(180deg, #e0559e, #a92f7b); -webkit-background-clip: text; background-clip: text; color: transparent; padding: 0 1.5cqw; }
+.ilu-princesa-jardim .age { font: 700 2.8cqw "Playfair Display"; color: #fff; background: linear-gradient(90deg, #d9a93e, #f2cf6c, #d9a93e); padding: .4cqw 3.6cqw; border-radius: 99px; text-transform: uppercase; letter-spacing: .14em; }
+.ilu-princesa-jardim .msg { font: italic 500 2.7cqw/1.25 "Playfair Display"; color: #8a3a6a; margin: 1cqw 0; }
+.ilu-princesa-jardim .when { gap: 1.6cqw; font: 600 2.6cqw "Playfair Display"; color: #8a3a6a; margin-top: .6cqw; }
+.ilu-princesa-jardim .w-day { padding: 0 2cqw; border-left: .3cqw solid #d9a93e; border-right: .3cqw solid #d9a93e; }
+.ilu-princesa-jardim .w-day b { font: 700 6cqw/1 "Playfair Display"; color: #c2368e; }
+.ilu-princesa-jardim .where { font: 600 2.5cqw Inter; color: #8a3a6a; margin-top: .8cqw; }
+.ilu-princesa-jardim .photo { width: 18cqw; border-color: #f2cf6c; margin: .6cqw auto; }
+
+/* Heróis da Cidade — título de gibi no céu */
+.ilu-herois-cidade .ilu-zone { top: 4%; bottom: 58%; left: 8%; right: 8%; }
+.ilu-herois-cidade .pre { font: 400 4.2cqw Bangers; color: #fff; background: #d62828; padding: .4cqw 3cqw; transform: rotate(-3deg); letter-spacing: .06em; box-shadow: .8cqw .8cqw 0 #1d2f6f; }
+.ilu-herois-cidade .name { margin-top: 1.6cqw; font: 400 17cqw/1 Bangers; letter-spacing: .03em; color: #ffd23f; -webkit-text-stroke: .7cqw #1d2f6f; text-shadow: 1.1cqw 1.1cqw 0 #d62828, 1.9cqw 1.9cqw 0 #1d2f6f; transform: rotate(-3deg); text-transform: uppercase; }
+.ilu-herois-cidade .age { margin-top: .6cqw; font: 400 4.6cqw Bangers; color: #fff; letter-spacing: .06em; text-shadow: 0 .5cqw 0 #1d2f6f; }
+.ilu-herois-cidade .age b { font-size: 8cqw; color: #ffd23f; }
+.ilu-herois-cidade .msg { font: 800 3.2cqw/1.25 "Baloo 2"; color: #fff; text-shadow: 0 .4cqw 1.4cqw rgba(29,47,111,.9); max-width: 86%; }
+.ilu-herois-cidade .when { font: 400 3.5cqw Bangers; letter-spacing: .05em; color: #fff; background: #1d2f6f; padding: 1cqw 3.4cqw; border: .5cqw solid #fff; box-shadow: 1cqw 1cqw 0 #d62828; text-transform: uppercase; }
+.ilu-herois-cidade .w-day b { font-size: 6.5cqw; color: #ffd23f; }
+.ilu-herois-cidade .where { font: 800 3.1cqw "Baloo 2"; color: #fff; text-shadow: 0 .4cqw 1.4cqw rgba(29,47,111,.9); }
+
+/* Safari Aquarela — texto no arco de folhas */
+.ilu-safari-aquarela .ilu-zone { top: 18%; bottom: 41%; left: 20%; right: 20%; }
+.ilu-safari-aquarela .pre { font: 600 2.9cqw "Baloo 2"; color: #8a6a4a; text-transform: uppercase; letter-spacing: .06em; }
+.ilu-safari-aquarela .name { font: 800 13cqw/1 "Baloo 2"; color: #b8683d; letter-spacing: -.01em; margin-top: 1cqw; }
+.ilu-safari-aquarela .age { margin-top: 1.4cqw; font: 700 3.6cqw "Baloo 2"; color: #fff; background: #8fa676; padding: .4cqw 4cqw; border-radius: 99px; }
+.ilu-safari-aquarela .msg { font: 500 3.2cqw/1.3 Fredoka; color: #7a6450; }
+.ilu-safari-aquarela .when { font: 700 3.1cqw "Baloo 2"; color: #6b5640; text-transform: uppercase; }
+.ilu-safari-aquarela .w-day { padding: 0 3cqw; border-left: .4cqw solid #c9b394; border-right: .4cqw solid #c9b394; }
+.ilu-safari-aquarela .w-day b { font: 800 8cqw/1 "Baloo 2"; color: #8fa676; }
+.ilu-safari-aquarela .where { font: 600 3cqw Fredoka; color: #7a6450; }
+
+/* Unicórnio nas Nuvens — céu pastel */
+.ilu-unicornio-nuvens .ilu-zone { top: 9%; bottom: 52%; left: 8%; right: 8%; }
+.ilu-unicornio-nuvens .pre { font: 800 3.6cqw "Baloo 2"; color: #8a4fa6; text-transform: uppercase; letter-spacing: .12em; }
+.ilu-unicornio-nuvens .name { font: 400 17cqw/1.15 Pacifico; color: #fff; text-shadow: .5cqw .5cqw 0 #d95fae, -.5cqw -.5cqw 0 #d95fae, .5cqw -.5cqw 0 #d95fae, -.5cqw .5cqw 0 #d95fae, 0 1.4cqw 0 #a8458a, 0 2.4cqw 3cqw rgba(168, 69, 138, .4); }
+.ilu-unicornio-nuvens .age { margin-top: 1cqw; font: 800 3.8cqw "Baloo 2"; color: #fff; background: linear-gradient(90deg, #ff8cc6, #b48cff); padding: .6cqw 5cqw; border-radius: 99px; text-transform: uppercase; letter-spacing: .1em; }
+.ilu-unicornio-nuvens .msg { font: 700 3.3cqw/1.3 "Baloo 2"; color: #7a3f86; }
+.ilu-unicornio-nuvens .when { font: 800 3.2cqw "Baloo 2"; color: #7a3f86; background: rgba(255,255,255,.75); padding: 1.4cqw 4cqw; border-radius: 4cqw; }
+.ilu-unicornio-nuvens .w-day b { font: 800 7.5cqw/1 "Baloo 2"; color: #d95fae; }
+.ilu-unicornio-nuvens .where { font: 700 3.1cqw "Baloo 2"; color: #7a3f86; }
