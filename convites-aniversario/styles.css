@@ -797,3 +797,12 @@ body.guest-mode .nav .btn::after { content: " também"; }
 .ilu-quinze-anos .ilu-head { display: contents; }
 .ilu-quinze-anos .pre { order: -2; margin-bottom: 1cqw; }
 .ilu-boteco .ilu-zone { top: 16.5%; }
+
+/* Galeria com 2 colunas no celular */
+@media (max-width: 560px) {
+  .gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tpl-item { padding: 8px; gap: 8px; border-radius: 14px; }
+  .tpl-meta { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .tpl-meta strong { font-size: .92rem; line-height: 1.2; }
+  .ribbon { top: 14px; right: -42px; font-size: .6rem; padding: 3px 44px; }
+}

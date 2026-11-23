@@ -408,7 +408,7 @@
 
   function pageModelos(q) {
     const cat = CATS.includes(q.get('cat')) ? q.get('cat') : 'Todos';
-    const list = [tplById('arte'), ...VISIVEIS.filter((t) => t.id !== 'arte' && (cat === 'Todos' || t.cat === cat))];
+    const list = [...VISIVEIS.filter((t) => t.id !== 'arte' && (cat === 'Todos' || t.cat === cat)), tplById('arte')];
     return `<section><div class="container">
       <h1>Modelos de convite</h1>
       <p class="muted">Todos os modelos funcionam no celular e podem ser personalizados. Modelos ★ Premium estão nos planos Festa e Festa+, e nesses planos todos os modelos são ✨ animados. Não achou o tema? <a href="#/sob-medida">Peça um convite sob medida</a>.</p>
